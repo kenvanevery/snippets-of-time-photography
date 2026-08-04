@@ -4,7 +4,7 @@ const navigation = [
   { label: "HOME", href: "#" },
   { label: "GALLERIES", href: "#galleries" },
   { label: "ABOUT", href: "#about" },
-  { label: "PRINTS", href: "#prints" },
+  { label: "FINE ART", href: "#fineart" },
   { label: "SPECIAL COMMISSIONS", href: "#commissions" },
   { label: "CONTACT", href: "#contact" },
 ];
