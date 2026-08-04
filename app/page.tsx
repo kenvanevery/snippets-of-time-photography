@@ -47,15 +47,15 @@ export default function Home() {
 />
 
       <div className="relative z-10 flex min-h-screen flex-col">
-        <nav className="mx-auto hidden w-full max-w-6xl items-center justify-center gap-10 px-6 pt-8 text-sm tracking-[0.2em] md:flex">
+        <nav className="mx-auto grid w-full max-w-6xl grid-cols-3 items-center gap-x-3 gap-y-4 px-4 pt-6 text-[10px] tracking-[0.15em] sm:text-xs md:flex md:justify-center md:gap-10 md:px-6 md:pt-8 md:text-sm md:tracking-[0.2em]">
           {navigation.map((item, index) => (
             <a
               key={item.label}
               href={item.href}
               className={
                 index === 0
-                  ? "border-b-2 border-[#d4ad63] pb-3 text-[#d4ad63]"
-                  : "pb-3 text-white/90 transition hover:text-[#d4ad63]"
+                  ? "border-b-2 border-[#d4ad63] pb-3 text-center text-[#d4ad63]"
+: "pb-3 text-center text-white/90 transition hover:text-[#d4ad63]"
               }
             >
               {item.label}
@@ -90,7 +90,7 @@ export default function Home() {
 
             <a
               href="#galleries"
-              className="group inline-flex items-center gap-4 border border-[#d4ad63] bg-black/10 px-8 py-4 text-xs tracking-[0.2em] text-[#d4ad63] backdrop-blur-[2px] transition duration-300 hover:bg-[#d4ad63] hover:text-black sm:text-sm"
+              className="group inline-flex items-center gap-4 border border-[#d4ad63] bg-black/10 px-8 py-4 text-xs tracking-[0.2em] text-[#d4ad63] backdrop-blur-[2px] transition duration-300 hover:bg-[#d4ad63] hover:text-[#07152f] active:scale-[0.98] active:bg-[#d4ad63] active:text-[#07152f]"
               style={{ marginTop: heroSettings.buttonTopMargin }}
             >
               EXPLORE THE GALLERY
