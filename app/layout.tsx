@@ -15,9 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Snippets of Time Photography",
   description: "Fine Art Photography from Michigan and Beyond",
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
