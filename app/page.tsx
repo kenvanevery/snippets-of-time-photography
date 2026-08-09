@@ -34,15 +34,21 @@ export default function Home() {
       <div
   className="absolute inset-0"
   style={{
-    background: `
-      linear-gradient(
-        to bottom,
-        rgba(5, 8, 20, 0.45) 0%,
-        rgba(5, 8, 20, 0.22) 22%,
-        rgba(5, 8, 20, 0.08) 42%,
-        rgba(5, 8, 20, 0.00) 70%
-      )
-    `,
+background: `
+  radial-gradient(
+    ellipse at 0% 55%,
+    rgba(212, 173, 99, 0.12) 0%,
+    rgba(212, 173, 99, 0.06) 25%,
+    rgba(212, 173, 99, 0.00) 50%
+  ),
+  linear-gradient(
+    to bottom,
+    rgba(5, 8, 20, 0.45) 0%,
+    rgba(5, 8, 20, 0.22) 22%,
+    rgba(5, 8, 20, 0.08) 42%,
+    rgba(5, 8, 20, 0.00) 70%
+  )
+`,
   }}
 />
 
