@@ -25,7 +25,7 @@ const heroSettings = {
 export default function Home() {
   return (
     <main
-      className="relative min-h-screen overflow-hidden bg-cover bg-[center_35%] text-white"
+      className="relative min-h-screen overflow-hidden bg-cover bg-[center_22%] text-white"
     style={{
   backgroundImage:
     "url('/images/hero/hero-mackinac-bridge.jpg')",
