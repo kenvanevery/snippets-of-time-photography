@@ -15,11 +15,11 @@ const navigation = [
   Change only these values when we want to adjust the hero.
 */
 const heroSettings = {
-  topPosition: "13vh",
-  groupLift: "-3.5rem",
-  logoWidth: "clamp(300px, 28vw, 470px)",
-  spacing: "1.2rem",
-  buttonTopMargin: "1rem",
+  topPosition: "9vh",
+  groupLift: "-4.5rem",
+  logoWidth: "clamp(360px, 34vw, 560px)",
+  spacing: "1.4rem",
+  buttonTopMargin: "1.4rem",
 };
 
 export default function Home() {
