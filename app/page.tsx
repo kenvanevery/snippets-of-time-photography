@@ -46,21 +46,6 @@ export default function Home() {
   }}
 />
 
-{/* Warm sunset glow */}
-<div
-  className="absolute inset-0 pointer-events-none"
-  style={{
-    background: `
-      radial-gradient(
-        ellipse at 0% 60%,
-        rgba(212, 173, 99, 0.32) 0%,
-        rgba(212, 173, 99, 0.16) 25%,
-        rgba(212, 173, 99, 0.00) 52%
-      )
-    `,
-    mixBlendMode: "screen",
-  }}
-/>
 
       <div className="relative z-10 flex min-h-screen flex-col">
         <nav className="mx-auto grid w-full max-w-6xl grid-cols-3 items-center gap-x-3 gap-y-4 px-4 pt-6 text-[10px] tracking-[0.15em] sm:text-xs md:flex md:justify-center md:gap-10 md:px-6 md:pt-8 md:text-sm md:tracking-[0.2em]">
