@@ -26,10 +26,10 @@ export default function Home() {
   return (
     <main
       className="relative min-h-screen overflow-hidden bg-cover bg-[center_45%] text-white"
-      style={{
-        backgroundImage:
-          "url('/images/hero/hero-mackinac-bridge-v2.jpg')",
-      }}
+    style={{
+  backgroundImage:
+    "url('/images/hero/hero-mackinac-bridge.jpg')",
+}}
     >
       <div
   className="absolute inset-0"
