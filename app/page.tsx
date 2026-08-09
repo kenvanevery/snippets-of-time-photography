@@ -30,26 +30,35 @@ export default function Home() {
   backgroundImage:
     "url('/images/hero/hero-mackinac-bridge.jpg')",
 }}
-    >
-      <div
+    >{/* Dark sky overlay */}
+<div
   className="absolute inset-0"
   style={{
-background: `
-  radial-gradient(
-    ellipse at 8% 62%,
-    rgba(212, 173, 99, 0.32) 0%,
-    rgba(212, 173, 99, 0.16) 22%,
-    rgba(212, 173, 99, 0.05) 38%,
-    rgba(212, 173, 99, 0.00) 52%
-  ),
-  linear-gradient(
-    to bottom,
-    rgba(5, 8, 20, 0.45) 0%,
-    rgba(5, 8, 20, 0.22) 22%,
-    rgba(5, 8, 20, 0.08) 42%,
-    rgba(5, 8, 20, 0.00) 70%
-  )
-`,
+    background: `
+      linear-gradient(
+        to bottom,
+        rgba(5, 8, 20, 0.45) 0%,
+        rgba(5, 8, 20, 0.22) 22%,
+        rgba(5, 8, 20, 0.08) 42%,
+        rgba(5, 8, 20, 0.00) 70%
+      )
+    `,
+  }}
+/>
+
+{/* Warm sunset glow */}
+<div
+  className="absolute inset-0 pointer-events-none"
+  style={{
+    background: `
+      radial-gradient(
+        ellipse at 0% 60%,
+        rgba(212, 173, 99, 0.32) 0%,
+        rgba(212, 173, 99, 0.16) 25%,
+        rgba(212, 173, 99, 0.00) 52%
+      )
+    `,
+    mixBlendMode: "screen",
   }}
 />
 
