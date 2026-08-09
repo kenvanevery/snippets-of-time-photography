@@ -36,10 +36,11 @@ export default function Home() {
   style={{
 background: `
   radial-gradient(
-    ellipse at 0% 55%,
-    rgba(212, 173, 99, 0.20) 0%,
-    rgba(212, 173, 99, 0.06) 25%,
-    rgba(212, 173, 99, 0.00) 50%
+    ellipse at 8% 62%,
+    rgba(212, 173, 99, 0.32) 0%,
+    rgba(212, 173, 99, 0.16) 22%,
+    rgba(212, 173, 99, 0.05) 38%,
+    rgba(212, 173, 99, 0.00) 52%
   ),
   linear-gradient(
     to bottom,
