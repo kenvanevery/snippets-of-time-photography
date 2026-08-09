@@ -37,7 +37,7 @@ export default function Home() {
 background: `
   radial-gradient(
     ellipse at 0% 55%,
-    rgba(212, 173, 99, 0.12) 0%,
+    rgba(212, 173, 99, 0.20) 0%,
     rgba(212, 173, 99, 0.06) 25%,
     rgba(212, 173, 99, 0.00) 50%
   ),
