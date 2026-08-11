@@ -1,6 +1,7 @@
 const galleries = [
   {
     title: "Northern Michigan",
+    href: "/galleries/northern-michigan",
     description:
       "The Great Lakes, lighthouses, forests, vineyards, seasons, and landscapes of Northern Michigan.",
   },
@@ -80,9 +81,12 @@ export default function GalleriesPage() {
                 {gallery.description}
               </p>
 
-              <div className="mt-7 text-sm tracking-[0.2em] text-gray-300 transition group-hover:text-[#d4af63]">
-                VIEW COLLECTION →
-              </div>
+              <a
+  href={gallery.href}
+  className="mt-7 inline-block text-sm tracking-[0.2em] text-white transition hover:text-[#d6b46a]"
+>
+  VIEW COLLECTION →
+</a>
             </div>
           ))}
         </div>
