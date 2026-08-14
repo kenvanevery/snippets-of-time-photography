@@ -90,7 +90,7 @@ export default function Home() {
             </p>
 
             <a
-              href="#galleries"
+              href="/galleries"
               className="group inline-flex items-center gap-4 border border-[#d4ad63] bg-black/10 px-8 py-4 text-xs tracking-[0.2em] text-[#d4ad63] backdrop-blur-[2px] transition duration-300 hover:bg-[#d4ad63] hover:text-[#07152f] active:scale-[0.98] active:bg-[#d4ad63] active:text-[#07152f]"
               style={{ marginTop: heroSettings.buttonTopMargin }}
             >
