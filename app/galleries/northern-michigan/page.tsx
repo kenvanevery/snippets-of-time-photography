@@ -56,7 +56,7 @@ const photos = [
     alt: "Old Mackinac Point Lighthouse with the Mackinac Bridge",
   },
   {
-    src: "/images/galleries/northern-michigan/Northern Michigan Farm Country in Winter.jpg",
+   src: "/images/galleries/northern-michigan/northern-michigan-farm-winter.jpg",
     alt: "Northern Michigan farm country during winter",
   },
   {
