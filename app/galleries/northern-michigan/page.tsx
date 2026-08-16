@@ -1,51 +1,107 @@
 const photos = [
   {
-    src: "/images/galleries/northern-michigan/_DSF0667.jpg",
-    alt: "Northern Michigan marina at sunset",
+    src: "/images/galleries/northern-michigan/Barn with stick and Daisies.jpg",
+    alt: "Daisies and rustic fence in Northern Michigan",
   },
   {
-    src: "/images/galleries/northern-michigan/_KEN6958.jpeg",
-    alt: "Northern Michigan harbor at sunset",
+    src: "/images/galleries/northern-michigan/Breakwall during storm with orngfe sky.jpg",
+    alt: "Waves crashing over a Northern Michigan breakwall beneath an orange sky",
   },
   {
-    src: "/images/galleries/northern-michigan/31889374035_046c1a4bb1_o.jpg",
-    alt: "Moonlight reflecting across Northern Michigan water",
+    src: "/images/galleries/northern-michigan/Charlevoix Lighthouse with freighter_.jpg",
+    alt: "Charlevoix lighthouse with a Great Lakes freighter",
   },
   {
-    src: "/images/galleries/northern-michigan/36352610802_bf190e2f8b_o-1.jpeg",
-    alt: "Autumn trail in Northern Michigan",
+    src: "/images/galleries/northern-michigan/Cheif Petoskey Sunset and breakwall.jpg",
+    alt: "Chief Petoskey statue overlooking Little Traverse Bay at sunset",
   },
   {
-    src: "/images/galleries/northern-michigan/38454401945_4d5871d056_o.jpg",
-    alt: "Rough Great Lakes water along a Northern Michigan breakwall",
-  },
-  {
-    src: "/images/galleries/northern-michigan/breakwall right copy_edit.jpg",
-    alt: "Storm waves striking a Northern Michigan breakwall",
+    src: "/images/galleries/northern-michigan/Cheif Petoskey Sunset.jpg",
+    alt: "Chief Petoskey statue overlooking a Northern Michigan sunset",
   },
   {
     src: "/images/galleries/northern-michigan/cherries.jpg",
-    alt: "Northern Michigan cherries",
+    alt: "Red cherries growing in Northern Michigan",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Downtown Trolley.jpg",
+    alt: "Downtown trolley in Northern Michigan",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Forest Meets Lak in Winter.jpg",
+    alt: "Winter forest meeting the frozen shoreline in Northern Michigan",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Forest.jpg",
+    alt: "Looking upward through a Northern Michigan forest canopy",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Harbor Point Harbor Springs.jpg",
+    alt: "Harbor Point overlooking Harbor Springs Michigan",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Lavender Field with road.jpg",
+    alt: "Lavender field along a country road in Northern Michigan",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Mac at Night.jpg",
+    alt: "Mackinac Bridge illuminated at night",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Mackinac Bridge wide angle.jpg",
+    alt: "Wide angle view of the Mackinac Bridge",
   },
   {
     src: "/images/galleries/northern-michigan/Mackinac Lighthouse-Bridge.jpg",
-    alt: "Lighthouse with the Mackinac Bridge in the distance",
+    alt: "Old Mackinac Point Lighthouse with the Mackinac Bridge",
   },
   {
-    src: "/images/galleries/northern-michigan/Petoskey.jpeg",
-    alt: "Petoskey Michigan waterfront",
+    src: "/images/galleries/northern-michigan/Northern Michigan Farm Country in Winter.jpg",
+    alt: "Northern Michigan farm country during winter",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Old Mission Pennisula August.jpg",
+    alt: "Old Mission Peninsula landscape in August",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Paroskey Marina Golden_.jpg",
+    alt: "Petoskey marina during golden hour",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Petoskey Bay Front.jpg",
+    alt: "Petoskey waterfront along Little Traverse Bay",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Petoskey Breakwall begining of winter.jpg",
+    alt: "Waves striking the Petoskey breakwall at the beginning of winter",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Petoskey.jpg",
+    alt: "Petoskey Michigan overlooking Little Traverse Bay",
+  },
+  {
+    src: "/images/galleries/northern-michigan/Red Sunset Petoskey Marina.jpg",
+    alt: "Red sunset over the Petoskey marina",
+  },
+  {
+    src: "/images/galleries/northern-michigan/SleepingBearSandune.jpg",
+    alt: "Sleeping Bear Dunes overlooking Lake Michigan",
   },
   {
     src: "/images/galleries/northern-michigan/Sunset Petoskey.jpg",
-    alt: "Sunset over the water near Petoskey Michigan",
+    alt: "Sunset over Little Traverse Bay in Petoskey",
   },
   {
-    src: "/images/galleries/northern-michigan/TNT_3773_HDR copy.jpg",
-    alt: "Autumn waterfront walkway in Northern Michigan",
+    src: "/images/galleries/northern-michigan/Supermoon over the Bay.jpg",
+    alt: "Supermoon reflecting across Little Traverse Bay",
   },
   {
-    src: "/images/galleries/northern-michigan/TNT_5792.jpg",
-    alt: "Lavender fields in Northern Michigan",
+    src: "/images/galleries/northern-michigan/Trillium in Northern Michigan.jpg",
+    alt: "Trillium blooming beneath a Northern Michigan forest",
+  },
+  {
+    src: "/images/galleries/northern-michigan/tunneloftrees.jpg",
+    alt: "Autumn along the Tunnel of Trees in Northern Michigan",
   },
 ];
 
