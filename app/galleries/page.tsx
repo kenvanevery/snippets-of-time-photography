@@ -1,3 +1,4 @@
+import Link from "next/link";
 const galleries = [
   {
     title: "Northern Michigan",
@@ -51,6 +52,14 @@ export default function GalleriesPage() {
   return (
     <main className="min-h-screen bg-[#050814] text-white">
       <section className="mx-auto max-w-7xl px-6 py-20">
+        <Link
+  href="/"
+  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-amber-300 transition-all duration-300 hover:text-white"
+>
+  <span aria-hidden="true">←</span>
+  Back Home
+</Link>
+
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-4 text-sm tracking-[0.35em] text-[#d4af63]">
             SNIPPETS OF TIME PHOTOGRAPHY
