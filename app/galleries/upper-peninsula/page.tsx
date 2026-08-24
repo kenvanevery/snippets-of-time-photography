@@ -49,8 +49,9 @@ export default function UpperPeninsulaPage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300">
-            Lake Superior, rugged shorelines, waterfalls, lighthouses, forests, and the wild character of Michigan's Upper Peninsula.
-        </div>
+    Lake Superior, rugged shorelines, waterfalls, lighthouses, forests, and the wild character of Michigan's Upper Peninsula.
+</p>
+</div>
 
         <div className="mt-14 columns-1 gap-5 sm:columns-2 lg:columns-3">
           {photos.map((photo) => (
