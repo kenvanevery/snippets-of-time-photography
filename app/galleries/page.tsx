@@ -1,11 +1,11 @@
 import Link from "next/link";
 const galleries = [
-  {
-    title: "Northern Michigan",
-    href: "/galleries/northern-michigan",
-    description:
-      "The Great Lakes, lighthouses, forests, vineyards, seasons, and landscapes of Northern Michigan.",
-  },
+ {
+  title: "Upper Peninsula",
+  description:
+    "Lake Superior, rugged shorelines, waterfalls, lighthouses, forests, and the wild character of Michigan's Upper Peninsula.",
+  href: "/galleries/upper-peninsula",
+},
   {
     title: "Waterscapes",
     description:
