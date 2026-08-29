@@ -5,7 +5,7 @@ const navigation = [
   { label: "GALLERIES", href: "/galleries" },
   { label: "ABOUT", href: "#about" },
   { label: "FINE ART", href: "#fineart" },
-  { label: "SPECIAL COMMISSIONS", href: "#commissions" },
+{ label: "HYPE SHOTS", href: "/hype-shots" },
   { label: "CONTACT", href: "#contact" },
 ];
 
@@ -28,7 +28,7 @@ export default function Home() {
       className="relative min-h-screen overflow-hidden bg-cover bg-[center_22%] text-white"
     style={{
   backgroundImage:
-    "url('/images/hero/hero-mackinac-bridge.jpg')",
+  "url('/images/hero/hero-mackinac-bridge-v3.jpg')",
 }}
     >{/* Dark sky overlay */}
 <div
