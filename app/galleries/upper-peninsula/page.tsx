@@ -59,12 +59,23 @@ export default function UpperPeninsulaPage() {
               key={photo.src}
               className="mb-5 break-inside-avoid overflow-hidden bg-zinc-950"
             >
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                className="h-auto w-full transition duration-500 hover:scale-[1.02]"
-                loading="lazy"
-              />
+              {photo.src.includes("Lighthouse Crisp Point.jpg") ? (
+  <a href="/art/crisp-point-lighthouse">
+    <img
+      src={photo.src}
+      alt={photo.alt}
+      className="h-auto w-full cursor-pointer transition duration-500 hover:scale-[1.02]"
+      loading="lazy"
+    />
+  </a>
+) : (
+  <img
+    src={photo.src}
+    alt={photo.alt}
+    className="h-auto w-full transition duration-500 hover:scale-[1.02]"
+    loading="lazy"
+  />
+)}
             </div>
           ))}
         </div>
