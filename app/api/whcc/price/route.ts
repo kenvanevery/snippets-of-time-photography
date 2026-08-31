@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { list, issueSignedToken, presignUrl } from "@vercel/blob";
 
 const WHCC_BASE_URL = "https://sandbox.apps.whcc.com";
 
@@ -6,14 +7,55 @@ export async function GET() {
   try {
     const consumerKey = process.env.WHCC_CONSUMER_KEY;
     const consumerSecret = process.env.WHCC_CONSUMER_SECRET;
+    const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
 
-    if (!consumerKey || !consumerSecret) {
+    if (!consumerKey || !consumerSecret || !blobToken) {
       return NextResponse.json(
-        { error: "WHCC credentials are missing." },
+        { error: "Required credentials are missing." },
         { status: 500 }
       );
     }
 
+    // Find our private Crisp Point print master.
+    const blobResult = await list({
+      prefix: "print-masters/Crisp-Point-Lighthouse-PRINT.jpg",
+      token: blobToken,
+    });
+
+    const crispPointBlob = blobResult.blobs.find(
+      (blob) =>
+        blob.pathname ===
+        "print-masters/Crisp-Point-Lighthouse-PRINT.jpg"
+    );
+
+    if (!crispPointBlob) {
+      return NextResponse.json(
+        { error: "Crisp Point print master was not found." },
+        { status: 404 }
+      );
+    }
+
+    // Create a temporary private GET URL for WHCC.
+    const validUntil = Date.now() + 60 * 60 * 1000;
+
+    const signedToken = await issueSignedToken({
+      pathname: crispPointBlob.pathname,
+      operations: ["get"],
+      validUntil,
+      token: blobToken,
+    });
+
+    const { presignedUrl: signedImageUrl } = await presignUrl(
+      signedToken,
+      {
+        pathname: crispPointBlob.pathname,
+        operation: "get",
+        validUntil,
+        access: "private",
+      }
+    );
+
+    // Authenticate with WHCC sandbox.
     const tokenUrl = new URL(`${WHCC_BASE_URL}/api/AccessToken`);
 
     tokenUrl.searchParams.set("grant_type", "consumer_credentials");
@@ -42,80 +84,154 @@ export async function GET() {
       );
     }
 
-    const catalogResponse = await fetch(
-      `${WHCC_BASE_URL}/api/catalog/`,
+  // Crisp Point 20x30 Premium Gallery Wrap test order.
+const orderRequest = {
+EntryId: "12345",
+
+  Orders: [
+  {
+    SequenceNumber: 1,
+    Instructions: null,
+    Reference: "SOT Crisp 20x30 Test",
+
+          SendNotificationEmailAddress: null,
+          SendNotificationEmailToAccount: true,
+
+          // WHCC documentation sample address — sandbox test only.
+          ShipToAddress: {
+            Name: "Chris Hanline",
+            Attn: null,
+            Addr1: "2840 Lone Oak Parkway",
+            Addr2: null,
+            City: "Eagan",
+            State: "MN",
+            Zip: "55121",
+            Country: "US",
+            Phone: "6516468263",
+          },  
+
+          ShipFromAddress: {
+            Name: "Returns Department",
+            Addr1: "3432 Denmark Ave",
+            Addr2: "Suite 390",
+            City: "Eagan",
+            State: "MN",
+            Zip: "55123",
+            Country: "US",
+            Phone: "8002525234",
+          },
+
+          // Drop ship + lowest-cost USA shipping.
+          OrderAttributes: [
+            { AttributeUID: 548 },
+            { AttributeUID: 553 },
+          ],
+
+          OrderItems: [
+            {
+              // Fine Art Canvas Gallery Wrap 20x30, 1.5"
+              ProductUID: 89,
+              Quantity: 1,
+ItemAssets: [
+  {
+  ProductNodeID: 10000,
+             AssetPath: signedImageUrl,
+
+ImageHash: "52E813FDD2B91E937DE7C509D2AEA8A6",
+
+PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
+
+                  AutoRotate: true,
+                },
+              ],
+
+              // Premium Gallery Wrap + Matte Laminate.
+              ItemAttributes: [
+               { AttributeUID: 126 },
+{ AttributeUID: 131 }, 
+              ],
+            },
+          ],
+        },
+      ],
+    };
+
+    // IMPORTANT:
+    // This imports the order for validation/pricing ONLY.
+    // It DOES NOT submit the order for production.
+    const importResponse = await fetch(
+      `${WHCC_BASE_URL}/api/OrderImport`,
       {
+        method: "POST",
         headers: {
           Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify(orderRequest),
         cache: "no-store",
       }
     );
 
-    if (!catalogResponse.ok) {
+    const importText = await importResponse.text();
+
+    let importData;
+
+    try {
+      importData = JSON.parse(importText);
+    } catch {
+      importData = importText;
+    }
+
+    if (!importResponse.ok) {
       return NextResponse.json(
-        { error: "WHCC catalog request failed." },
+        {
+          success: false,
+          error: "WHCC OrderImport failed.",
+          status: importResponse.status,
+          whccResponse: importData,
+        },
         { status: 500 }
       );
     }
 
-    const catalog = await catalogResponse.json();
-
-    const categories = Array.isArray(catalog.Categories)
-      ? catalog.Categories
-      : [];
-
-    const galleryWrapCategory = categories.find(
-      (category: any) => category.Name === "Gallery Wraps"
-    );
-
-    const products = Array.isArray(galleryWrapCategory?.ProductList)
-      ? galleryWrapCategory.ProductList
-      : [];
-
-    const product = products.find(
-      (item: any) =>
-        item.Name?.includes("Fine Art Canvas Gallery Wrap 20x30")
-    );
-
-    const shippingCategory = categories.find(
-  (category: any) => category.Name === "Shipping"
-);
-
-const orderCategories = Array.isArray(
-  shippingCategory?.OrderAttributeCategoryList
-)
-  ? shippingCategory.OrderAttributeCategoryList
-  : [];
-
+  
+    const order = importData?.Orders?.[0];
+console.log("WHCC RAW RESPONSE:", importData);
     return NextResponse.json({
       success: true,
 
-      product: product
-        ? {
-            name: product.Name,
-            productUID: product.Id,
-          }
-        : null,
+      message:
+        "WHCC sandbox OrderImport succeeded. ORDER WAS NOT SUBMITTED.",
 
-      orderAttributeCategories: orderCategories.map((category: any) => ({
-        id: category.Id,
-        name: category.AttributeCategoryName,
-        requiredLevel: category.RequiredLevel,
+      product: {
+        photograph: "Crisp Point Lighthouse",
+        finish: "Premium Gallery Wrap",
+        protection: "Matte Laminate",
+        size: "20x30",
+        retailPrice: 349,
+      },
 
-        attributes: Array.isArray(category.Attributes)
-          ? category.Attributes.map((attribute: any) => ({
-              id: attribute.Id,
-              name: attribute.AttributeName,
-            }))
-          : [],
-      })),
+      whccPricing: {
+        subTotal: order?.SubTotal ?? null,
+        tax: order?.Tax ?? null,
+        total: order?.Total ?? null,
+        products: order?.Products ?? [],
+      },
+
+      confirmationID: importData?.ConfirmationID ?? null,
+
+      submittedForProduction: false,
     });
   } catch (error) {
-    console.error("WHCC price setup error:", error);
+    console.error("WHCC OrderImport error:", error);
 
     return NextResponse.json(
-      { error: "Unexpected WHCC price setup error." },
+      {
+        success: false,
+        error: "Unexpected WHCC OrderImport error.",
+        details:
+          error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 500 }
     );
   }
