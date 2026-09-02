@@ -205,7 +205,7 @@ PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
 
   
     const order = importData?.Orders?.[0];
-console.log("WHCC RAW RESPONSE:", importData);
+
     return NextResponse.json({
       success: true,
 
