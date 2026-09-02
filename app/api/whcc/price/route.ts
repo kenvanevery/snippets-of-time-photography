@@ -3,8 +3,17 @@ import { list, issueSignedToken, presignUrl } from "@vercel/blob";
 
 const WHCC_BASE_URL = "https://sandbox.apps.whcc.com";
 
-export async function GET() {
+export async function POST(request: Request) {
   try {
+    const body = await request.json();
+const finish = body.finish;
+const size = body.size;
+if (finish !== "Gallery Wrap Canvas" || size !== "20x30") {
+  return NextResponse.json(
+    { error: "WHCC pricing is currently configured for the 20x30 Gallery Wrap Canvas test only." },
+    { status: 400 }
+  );
+}
     const consumerKey = process.env.WHCC_CONSUMER_KEY;
     const consumerSecret = process.env.WHCC_CONSUMER_SECRET;
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;

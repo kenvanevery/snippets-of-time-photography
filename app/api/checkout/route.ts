@@ -98,17 +98,23 @@ export async function POST(request: Request) {
       success_url: `${origin}/art/crisp-point-lighthouse?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
 
       cancel_url: `${origin}/art/crisp-point-lighthouse?checkout=cancelled`,
-    });
+   });
 
-    return NextResponse.json({
-      url: session.url,
-    });
-  } catch (error) {
-    console.error("Stripe checkout error:", error);
+console.log("Checkout metadata:", {
+  artwork_slug: "crisp-point-lighthouse",
+  finish,
+  size,
+});
+    console.error("Stripe checkout error:",);
+return NextResponse.json({
+  url: session.url,
+});
+} catch (error) {
+  console.error("Stripe checkout error:", error);
 
-    return NextResponse.json(
-      { error: "Unable to create checkout session." },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json(
+    { error: "Unable to create checkout session." },
+    { status: 500 }
+  );
+}
 }
