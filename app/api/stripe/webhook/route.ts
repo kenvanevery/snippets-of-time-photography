@@ -32,6 +32,13 @@ try {
 const finish = session.metadata?.finish;
 const size = session.metadata?.size;
 const artworkSlug = session.metadata?.artwork_slug;
+
+console.log("Webhook metadata received:", {
+  finish,
+  size,
+  artworkSlug,
+});
+
 if (!finish || !size || !artworkSlug) {
   console.error("Missing Stripe order metadata.");
   return NextResponse.json({ received: true });

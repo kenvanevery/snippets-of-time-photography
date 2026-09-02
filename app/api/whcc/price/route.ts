@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const body = await request.json();
 const finish = body.finish;
 const size = body.size;
-if (finish !== "Gallery Wrap Canvas" || size !== "20x30") {
+if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
   return NextResponse.json(
     { error: "WHCC pricing is currently configured for the 20x30 Gallery Wrap Canvas test only." },
     { status: 400 }
