@@ -205,7 +205,39 @@ PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
 
   
     const order = importData?.Orders?.[0];
+const confirmationID = importData?.ConfirmationID;
 
+if (!confirmationID) {
+  return NextResponse.json(
+    {
+      success: false,
+      error: "WHCC did not return a ConfirmationID.",
+    },
+    { status: 500 }
+  );
+}
+const submitResponse = await fetch(
+  `https://sandbox.apps.whcc.com/api/OrderImport/Submit/${confirmationID}`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }
+);
+
+const submitText = await submitResponse.text();
+if (!submitResponse.ok) {
+  return NextResponse.json(
+    {
+      success: false,
+      error: "WHCC OrderSubmit failed.",
+      status: submitResponse.status,
+      whccResponse: submitText,
+    },
+    { status: 500 }
+  );
+}
     return NextResponse.json({
       success: true,
 
@@ -229,7 +261,7 @@ PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
 
       confirmationID: importData?.ConfirmationID ?? null,
 
-      submittedForProduction: false,
+      submittedForProduction: true,
     });
   } catch (error) {
     console.error("WHCC OrderImport error:", error);
