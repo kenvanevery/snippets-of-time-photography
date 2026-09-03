@@ -1,6 +1,8 @@
 "use client";
 
+import { artworks } from "@/app/data/artworks";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
 type FinishName =
@@ -79,13 +81,34 @@ const finishes: Finish[] = [
 ];
 
 export default function ArtworkPage() {
+  const params = useParams();
+  const slug = params.slug as keyof typeof artworks;
+  const artwork = artworks[slug];
+if (!artwork) {
+  return null;
+}
+const canvasOptions = Object.entries(
+  artwork.products["Gallery Wrap Canvas"].sizes
+).map(([size, details]) => ({
+  size,
+  price: details.retailPrice,
+}));
   const [selectedFinish, setSelectedFinish] =
+
     useState<FinishName>("Gallery Wrap Canvas");
 
-  const currentFinish = useMemo(
-    () => finishes.find((finish) => finish.name === selectedFinish)!,
-    [selectedFinish]
-  );
+  const currentFinish = useMemo(() => {
+  const finish = finishes.find((finish) => finish.name === selectedFinish)!;
+
+  if (finish.name === "Gallery Wrap Canvas") {
+    return {
+      ...finish,
+      options: canvasOptions,
+    };
+  }
+
+  return finish;
+}, [selectedFinish, canvasOptions]);
 
   const [selectedSize, setSelectedSize] = useState("20×30");
 
@@ -149,8 +172,8 @@ async function handleCheckout() {
           <div>
             <div className="overflow-hidden bg-zinc-950">
               <img
-                src="/images/galleries/upper-peninsula/Lighthouse Crisp Point.jpg"
-                alt="Crisp Point Lighthouse"
+                src={artwork.image}
+                alt={artwork.title}
                 className="h-auto w-full object-contain"
               />
             </div>
@@ -162,11 +185,11 @@ async function handleCheckout() {
             </p>
 
             <h1 className="mt-4 text-4xl font-light tracking-[0.08em] md:text-5xl">
-              Crisp Point Lighthouse
+              {artwork.title}
             </h1>
 
             <p className="mt-4 text-sm uppercase tracking-[0.2em] text-gray-400">
-              Lake Superior • Michigan&apos;s Upper Peninsula
+              {artwork.location}
             </p>
 
             <p className="mt-7 leading-8 text-gray-300">
