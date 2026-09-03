@@ -4,7 +4,7 @@ const navigation = [
   { label: "HOME", href: "#" },
   { label: "GALLERIES", href: "/galleries" },
   { label: "ABOUT", href: "#about" },
-  { label: "FINE ART", href: "#fineart" },
+
 { label: "HYPE SHOTS", href: "/hype-shots" },
   { label: "CONTACT", href: "#contact" },
 ];
