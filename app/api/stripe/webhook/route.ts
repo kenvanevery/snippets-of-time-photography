@@ -1,7 +1,8 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
-
+import { createClient } from "redis";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
 
 export async function POST(request: Request) {
       const body = await request.text();
@@ -29,6 +30,13 @@ try {
   if (session.payment_status !== "paid") {
   return NextResponse.json({ received: true });
 }
+const redis = createClient({
+  url: process.env.REDIS_URL,
+});
+
+if (!redis.isOpen) {
+  await redis.connect();
+}
 const finish = session.metadata?.finish;
 const size = session.metadata?.size;
 const artworkSlug = session.metadata?.artwork_slug;
@@ -38,6 +46,12 @@ const shippingDetails =
 const customerPhone = session.customer_details?.phone;
 if (!finish || !size || !artworkSlug) {
   console.error("Missing Stripe order metadata.");
+  return NextResponse.json({ received: true });
+}const orderKey = `stripe-order:${session.id}`;
+const alreadyProcessed = await redis.get(orderKey);
+
+if (alreadyProcessed) {
+  console.log("Stripe order already processed:", session.id);
   return NextResponse.json({ received: true });
 }
 const whccResponse = await fetch(
@@ -57,6 +71,7 @@ const whccResponse = await fetch(
 );
 
 const whccData = await whccResponse.json();
+await redis.set(orderKey, "processed");
 
 console.log("WHCC response after paid Stripe order:", whccData);
 console.log("Stripe checkout completed:", session.id);
