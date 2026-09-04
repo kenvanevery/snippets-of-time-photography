@@ -8,6 +8,8 @@ export async function POST(request: Request) {
     const body = await request.json();
 const finish = body.finish;
 const size = body.size;
+const shippingDetails = body.shippingDetails;
+const customerPhone = body.customerPhone;
 if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
   return NextResponse.json(
     { error: "WHCC pricing is currently configured for the 20x30 Gallery Wrap Canvas test only." },
@@ -95,7 +97,7 @@ if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
 
   // Crisp Point 20x30 Premium Gallery Wrap test order.
 const orderRequest = {
-EntryId: "12345",
+  EntryId: `SOT-${Date.now()}`,
 
   Orders: [
   {
@@ -106,18 +108,18 @@ EntryId: "12345",
           SendNotificationEmailAddress: null,
           SendNotificationEmailToAccount: true,
 
-          // WHCC documentation sample address — sandbox test only.
+         
           ShipToAddress: {
-            Name: "Chris Hanline",
-            Attn: null,
-            Addr1: "2840 Lone Oak Parkway",
-            Addr2: null,
-            City: "Eagan",
-            State: "MN",
-            Zip: "55121",
-            Country: "US",
-            Phone: "6516468263",
-          },  
+  Name: shippingDetails?.name ?? "",
+  Attn: null,
+  Addr1: shippingDetails?.address?.line1 ?? "",
+  Addr2: shippingDetails?.address?.line2 ?? null,
+  City: shippingDetails?.address?.city ?? "",
+  State: shippingDetails?.address?.state ?? "",
+  Zip: shippingDetails?.address?.postal_code ?? "",
+  Country: shippingDetails?.address?.country ?? "US",
+  Phone: customerPhone ?? "",
+},
 
           ShipFromAddress: {
             Name: "Returns Department",
@@ -164,6 +166,10 @@ PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
         },
       ],
     };
+
+console.log("WHCC ShipToAddress:", orderRequest.Orders[0].ShipToAddress);
+
+// IMPORTANT:
 
     // IMPORTANT:
     // This imports the order for validation/pricing ONLY.

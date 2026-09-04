@@ -32,9 +32,10 @@ try {
 const finish = session.metadata?.finish;
 const size = session.metadata?.size;
 const artworkSlug = session.metadata?.artwork_slug;
+const shippingDetails =
+  session.collected_information?.shipping_details;
 
-
-
+const customerPhone = session.customer_details?.phone;
 if (!finish || !size || !artworkSlug) {
   console.error("Missing Stripe order metadata.");
   return NextResponse.json({ received: true });
@@ -47,9 +48,11 @@ const whccResponse = await fetch(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      finish,
-      size,
-    }),
+  finish,
+  size,
+  shippingDetails,
+  customerPhone,
+}),
   }
 );
 
