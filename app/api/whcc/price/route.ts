@@ -79,11 +79,25 @@ if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
     });
 
     if (!tokenResponse.ok) {
-      return NextResponse.json(
-        { error: "WHCC authentication failed." },
-        { status: 500 }
-      );
-    }
+  const tokenErrorText = await tokenResponse.text();
+
+  console.error(
+    "WHCC token error:",
+    tokenResponse.status,
+    tokenErrorText
+  );
+
+  return NextResponse.json(
+    {
+      success: false,
+      error: "WHCC authentication failed.",
+      status: tokenResponse.status,
+      details: tokenErrorText,
+    },
+    { status: 500 }
+  );
+}
+ 
 
     const tokenData = await tokenResponse.json();
     const accessToken = tokenData.Token;
