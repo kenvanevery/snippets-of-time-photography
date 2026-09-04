@@ -13,19 +13,29 @@ export async function POST(request: Request) {
     { status: 400 }
   );
 }
-let event: Stripe.Event;
-try {
-  event = stripe.webhooks.constructEvent(
-    body,
-    signature,
-    process.env.STRIPE_WEBHOOK_SECRET!
-  );
-} catch (error) {
+let event: Stripe.Event | null = null;
+
+const webhookSecrets = [
+  process.env.STRIPE_WEBHOOK_SECRET,
+  process.env.STRIPE_WEBHOOK_SECRET_SANDBOX,
+].filter((secret): secret is string => Boolean(secret));
+
+for (const secret of webhookSecrets) {
+  try {
+    event = stripe.webhooks.constructEvent(body, signature, secret);
+    break;
+  } catch {
+    // Try the next webhook signing secret
+  }
+}
+
+if (!event) {
   return NextResponse.json(
     { error: "Invalid Stripe webhook signature." },
     { status: 400 }
   );
-}if (event.type === "checkout.session.completed") {
+}
+if (event.type === "checkout.session.completed") {
   const session = event.data.object as Stripe.Checkout.Session;
   if (session.payment_status !== "paid") {
   return NextResponse.json({ received: true });
