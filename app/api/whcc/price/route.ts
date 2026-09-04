@@ -210,17 +210,20 @@ console.log("WHCC ShipToAddress:", orderRequest.Orders[0].ShipToAddress);
     }
 
     if (!importResponse.ok) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "WHCC OrderImport failed.",
-          status: importResponse.status,
-          whccResponse: importData,
-        },
-        { status: 500 }
-      );
-    }
+  console.error(
+    `WHCC ORDERIMPORT ERROR ${importResponse.status}: ${JSON.stringify(importData)}`
+  );
 
+  return NextResponse.json(
+    {
+      success: false,
+      error: "WHCC OrderImport failed.",
+      status: importResponse.status,
+      whccResponse: importData,
+    },
+    { status: 500 }
+  );
+}
   
     const order = importData?.Orders?.[0];
 const confirmationID = importData?.ConfirmationID;
