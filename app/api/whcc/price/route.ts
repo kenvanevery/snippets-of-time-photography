@@ -81,11 +81,9 @@ if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
     if (!tokenResponse.ok) {
   const tokenErrorText = await tokenResponse.text();
 
-  console.error(
-    "WHCC token error:",
-    tokenResponse.status,
-    tokenErrorText
-  );
+ console.error(
+  `WHCC TOKEN ERROR ${tokenResponse.status}: ${tokenErrorText}`
+);
 
   return NextResponse.json(
     {
