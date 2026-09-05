@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { list, issueSignedToken, presignUrl } from "@vercel/blob";
 
-const WHCC_BASE_URL = "https://sandbox.apps.whcc.com";
+const WHCC_BASE_URL =
+  process.env.WHCC_BASE_URL || "https://sandbox.apps.whcc.com";
 
 export async function POST(request: Request) {
   try {
