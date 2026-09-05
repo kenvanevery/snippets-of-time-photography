@@ -81,7 +81,13 @@ const whccResponse = await fetch(
 );
 
 const whccData = await whccResponse.json();
-await redis.set(orderKey, "processed");
+if (!whccResponse.ok) {
+  console.error("WHCC fulfillment failed:", whccData);
+  return NextResponse.json(
+    { error: "WHCC fulfillment failed." },
+    { status: 500 }
+  );
+}await redis.set(orderKey, "processed");
 
 console.log("WHCC response after paid Stripe order:", whccData);
 console.log("Stripe checkout completed:", session.id);

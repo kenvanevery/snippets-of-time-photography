@@ -183,11 +183,9 @@ PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
 
 
 
-// IMPORTANT:
 
-    // IMPORTANT:
-    // This imports the order for validation/pricing ONLY.
-    // It DOES NOT submit the order for production.
+
+  
     const importResponse = await fetch(
       `${WHCC_BASE_URL}/api/OrderImport`,
       {
