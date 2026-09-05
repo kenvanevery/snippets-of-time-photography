@@ -122,16 +122,17 @@ const orderRequest = {
 
          
 
-  ShipToAddress: {
-  Name: shippingDetails?.name || "Snippets Sandbox Test",
+
+ ShipToAddress: {
+  Name: shippingDetails?.name ?? "",
   Attn: null,
-  Addr1: shippingDetails?.address?.line1 || "3432 Denmark Ave",
+  Addr1: shippingDetails?.address?.line1 ?? "",
   Addr2: shippingDetails?.address?.line2 ?? null,
-  City: shippingDetails?.address?.city || "Eagan",
-  State: shippingDetails?.address?.state || "MN",
-  Zip: shippingDetails?.address?.postal_code || "55123",
-  Country: shippingDetails?.address?.country || "US",
-  Phone: customerPhone || "8002525234",
+  City: shippingDetails?.address?.city ?? "",
+  State: shippingDetails?.address?.state ?? "",
+  Zip: shippingDetails?.address?.postal_code ?? "",
+  Country: shippingDetails?.address?.country ?? "US",
+  Phone: customerPhone ?? "",
 },
 
           ShipFromAddress: {
