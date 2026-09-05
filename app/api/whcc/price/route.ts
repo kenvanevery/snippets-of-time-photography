@@ -181,7 +181,7 @@ PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
       ],
     };
 
-console.log("WHCC ShipToAddress:", orderRequest.Orders[0].ShipToAddress);
+
 
 // IMPORTANT:
 
