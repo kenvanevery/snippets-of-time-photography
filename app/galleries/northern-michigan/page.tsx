@@ -102,6 +102,11 @@ const photos = [
   {
     src: "/images/galleries/northern-michigan/tunneloftrees.jpg",
     alt: "Autumn along the Tunnel of Trees in Northern Michigan",
+    
+  },
+    {
+    src: "/images/galleries/northern-michigan/Mackinac-Bridge-Reflections.jpg",
+    alt: "Mackinac Bridge and reflections over the Straits of Mackinac",
   },
 ];
 
