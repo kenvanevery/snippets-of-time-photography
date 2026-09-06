@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     }
 
     const { error } = await resend.emails.send({
-      from: "Snippets of Time Photography <onboarding@resend.dev>",
+   from: "Snippets of Time Photography <contact@snippetsoftimephotography.com>",
       to: ["contact@snippetsoftimephotography.com"],
       replyTo: email,
       subject: `${interest} inquiry from ${name}`,
