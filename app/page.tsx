@@ -6,7 +6,7 @@ const navigation = [
   { label: "ABOUT", href: "#about" },
 
 { label: "HYPE SHOTS", href: "/hype-shots" },
-  { label: "CONTACT", href: "#contact" },
+{ label: "CONTACT", href: "/contact" },
 ];
 
 /*
