@@ -154,10 +154,10 @@ async function handleCheckout() {
       <section className="mx-auto max-w-7xl px-6 py-12 md:py-16">
         <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
           <Link
-            href="/galleries/upper-peninsula"
+            href={artwork.galleryHref}
             className="text-sm uppercase tracking-[0.25em] text-amber-300 transition hover:text-amber-200"
           >
-            ← Upper Peninsula
+          ← {artwork.galleryName}
           </Link>
 
           <Link

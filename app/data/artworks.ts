@@ -1,7 +1,9 @@
 export const artworks = {
   "crisp-point-lighthouse": {
-   title: "Crisp Point Lighthouse",
+  title: "Crisp Point Lighthouse",
 location: "Upper Peninsula, Michigan",
+galleryHref: "/galleries/upper-peninsula",
+galleryName: "Upper Peninsula",
 description:
   "Crisp Point Lighthouse stands along the remote Lake Superior shoreline, surrounded by open water, sand, and the rugged character of Michigan's Upper Peninsula.",
 image: "/images/galleries/upper-peninsula/Lighthouse Crisp Point.jpg",
@@ -36,6 +38,8 @@ image: "/images/galleries/upper-peninsula/Lighthouse Crisp Point.jpg",
 "red-bicycle-garden": {
 title: "Red Bicycle Garden",
 location: "Michigan",
+galleryHref: "/galleries/beauty-of-ordinary-things",
+galleryName: "Beauty of Ordinary Things",
 description:
   "A vibrant red bicycle emerges from lush greenery and flowers, transforming an ordinary garden scene into an unexpected moment of color and beauty.",
 image: "/images/galleries/beauty-of-ordinary-things/Red-Bicycle-Garden.jpg",
