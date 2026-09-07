@@ -13,6 +13,12 @@ const galleries = [
     href: "/galleries/upper-peninsula",
   },
   {
+  title: "The Beauty of Ordinary Things",
+  description:
+    "Unexpected beauty found in everyday objects, quiet details, overlooked places, and ordinary moments worth seeing differently.",
+  href: "/galleries/beauty-of-ordinary-things",
+},
+  {
     title: "Waterscapes",
     description:
       "Great Lakes shorelines, quiet inland waters, reflections, storms, harbors, and open water.",
