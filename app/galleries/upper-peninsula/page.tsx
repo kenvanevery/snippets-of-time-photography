@@ -7,7 +7,11 @@ const photos = [
 { src: "/images/galleries/upper-peninsula/Brockway Mountain Overlook 1.jpg", alt: "Brockway Mountain Overlook 1" },
 { src: "/images/galleries/upper-peninsula/Cliffs Lake in the Clouds.jpg", alt: "Cliffs Lake in the Clouds" },
 { src: "/images/galleries/upper-peninsula/Crisp Point Driftwood.jpg", alt: "Crisp Point Driftwood" },
-{ src: "/images/galleries/upper-peninsula/Crisp Point_.jpg", alt: "Crisp Point_" },
+{
+  src: "/images/galleries/upper-peninsula/Lighthouse Crisp Point.jpg",
+  alt: "Lighthouse Crisp Point",
+  slug: "crisp-point-lighthouse",
+},
 { src: "/images/galleries/upper-peninsula/Eagle Harbor Light Station 1.jpg", alt: "Eagle Harbor Light Station 1" },
 { src: "/images/galleries/upper-peninsula/First Snow_.jpg", alt: "First Snow_" },
 { src: "/images/galleries/upper-peninsula/Forest path.jpg", alt: "Forest path" },
@@ -59,8 +63,8 @@ export default function UpperPeninsulaPage() {
               key={photo.src}
               className="mb-5 break-inside-avoid overflow-hidden bg-zinc-950"
             >
-              {photo.src.includes("Lighthouse Crisp Point.jpg") ? (
-  <a href="/art/crisp-point-lighthouse">
+            {photo.slug ? (
+<a href={`/art/${photo.slug}`}>
     <img
       src={photo.src}
       alt={photo.alt}

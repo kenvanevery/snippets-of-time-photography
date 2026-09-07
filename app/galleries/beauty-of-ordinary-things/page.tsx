@@ -1,8 +1,9 @@
 const photos = [
-  {
-    src: "/images/galleries/beauty-of-ordinary-things/Red-Bicycle-Garden.jpg",
-    alt: "A red bicycle tucked into lush green foliage and flowers",
-  },
+{
+  src: "/images/galleries/beauty-of-ordinary-things/Red-Bicycle-Garden.jpg",
+  alt: "A red bicycle tucked into lush green foliage and flowers",
+  slug: "red-bicycle-garden",
+},
 ];
 
 export default function BeautyOfOrdinaryThingsPage() {
@@ -29,12 +30,14 @@ export default function BeautyOfOrdinaryThingsPage() {
         <div className="mt-16 grid gap-8 md:grid-cols-2">
           {photos.map((photo) => (
             <div key={photo.src} className="overflow-hidden bg-neutral-950">
+                <a href={`/art/${photo.slug}`}>
               <img
                 src={photo.src}
                 alt={photo.alt}
-                className="h-auto w-full object-cover"
-              />
-            </div>
+                     className="h-auto w-full object-cover"
+    />
+  </a>
+</div>
           ))}
         </div>
       </section>

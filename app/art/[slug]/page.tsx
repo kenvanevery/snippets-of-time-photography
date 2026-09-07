@@ -193,10 +193,8 @@ async function handleCheckout() {
             </p>
 
             <p className="mt-7 leading-8 text-gray-300">
-              Crisp Point Lighthouse stands along the remote Lake Superior
-              shoreline, surrounded by open water, sand, and the rugged
-              character of Michigan&apos;s Upper Peninsula.
-            </p>
+  {artwork.description}
+</p>
 
             <div className="mt-10 border-t border-white/10 pt-8">
               <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
