@@ -44,7 +44,8 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     const finish = body.finish;
-    const size = body.size;
+const size = body.size;
+const artworkTitle = body.artworkTitle;
 
     if (
       typeof finish !== "string" ||
@@ -73,7 +74,7 @@ export async function POST(request: Request) {
             unit_amount: price * 100,
 
             product_data: {
-              name: "Crisp Point Lighthouse",
+              name: artworkTitle,
               description: `${finish} • ${size}`,
             },
           },

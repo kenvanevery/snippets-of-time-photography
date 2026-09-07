@@ -134,9 +134,10 @@ async function handleCheckout() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      finish: selectedFinish,
-      size: currentOption.size,
-    }),
+  finish: selectedFinish,
+  size: currentOption.size,
+  artworkTitle: artwork.title,
+}),
   });
 
   const data = await response.json();
