@@ -133,10 +133,11 @@ async function handleCheckout() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
+   body: JSON.stringify({
   finish: selectedFinish,
   size: currentOption.size,
   artworkTitle: artwork.title,
+  artworkSlug: slug,
 }),
   });
 

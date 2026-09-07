@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     const finish = body.finish;
 const size = body.size;
 const artworkTitle = body.artworkTitle;
-
+const artworkSlug = body.artworkSlug;
     if (
       typeof finish !== "string" ||
       typeof size !== "string" ||
@@ -96,9 +96,9 @@ const artworkTitle = body.artworkTitle;
         size,
       },
 
-      success_url: `${origin}/art/crisp-point-lighthouse?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${origin}/art/${artworkSlug}?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
 
-      cancel_url: `${origin}/art/crisp-point-lighthouse?checkout=cancelled`,
+      cancel_url: `${origin}/art/${artworkSlug}?checkout=cancelled`,
    });
 
 console.log("Checkout metadata:", {
