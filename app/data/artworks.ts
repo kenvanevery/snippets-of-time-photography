@@ -66,5 +66,38 @@ image: "/images/galleries/beauty-of-ordinary-things/Red-Bicycle-Garden.jpg",
       },
     },
   },
-  }
+  },
+
+"mackinac-bridge-reflections": {
+  title: "Mackinac Bridge Reflections",
+  location: "Straits of Mackinac, Michigan",
+  galleryHref: "/galleries/northern-michigan",
+  galleryName: "Northern Michigan",
+  description:
+    "The Mackinac Bridge rises above the Straits of Mackinac, mirrored in the quiet water below in a distinctive view of one of Michigan's most recognizable landmarks.",
+  image: "/images/galleries/northern-michigan/Mackinac-Bridge-Reflections.jpg",
+  printMaster: "",
+
+  products: {
+    "Gallery Wrap Canvas": {
+      sizes: {
+        "12×18": {
+          retailPrice: 199,
+        },
+        "16×24": {
+          retailPrice: 279,
+        },
+        "20×30": {
+          retailPrice: 349,
+        },
+        "24×36": {
+          retailPrice: 499,
+        },
+        "40×60": {
+          retailPrice: 1199,
+        },
+      },
+    },
+  },
+},
 } as const;

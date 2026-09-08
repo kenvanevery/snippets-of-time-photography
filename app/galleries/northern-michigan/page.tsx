@@ -99,15 +99,15 @@ const photos = [
     src: "/images/galleries/northern-michigan/Trillium in Northern Michigan.jpg",
     alt: "Trillium blooming beneath a Northern Michigan forest",
   },
-  {
-    src: "/images/galleries/northern-michigan/tunneloftrees.jpg",
-    alt: "Autumn along the Tunnel of Trees in Northern Michigan",
-    
-  },
-    {
-    src: "/images/galleries/northern-michigan/Mackinac-Bridge-Reflections.jpg",
-    alt: "Mackinac Bridge and reflections over the Straits of Mackinac",
-  },
+ {
+  src: "/images/galleries/northern-michigan/tunneloftrees.jpg",
+  alt: "Autumn along the Tunnel of Trees in Northern Michigan",
+},
+{
+  src: "/images/galleries/northern-michigan/Mackinac-Bridge-Reflections.jpg",
+  alt: "Mackinac Bridge and reflections over the Straits of Mackinac",
+  slug: "mackinac-bridge-reflections",
+},
 ];
 
 export default function NorthernMichiganPage() {
@@ -135,12 +135,23 @@ export default function NorthernMichiganPage() {
               key={photo.src}
               className="mb-5 break-inside-avoid overflow-hidden bg-zinc-950"
             >
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                className="h-auto w-full transition duration-500 hover:scale-[1.02]"
-                loading="lazy"
-              />
+             {photo.slug ? (
+  <a href={`/art/${photo.slug}`}>
+    <img
+      src={photo.src}
+      alt={photo.alt}
+      className="h-auto w-full cursor-pointer transition duration-500 hover:scale-[1.02]"
+      loading="lazy"
+    />
+  </a>
+) : (
+  <img
+    src={photo.src}
+    alt={photo.alt}
+    className="h-auto w-full transition duration-500 hover:scale-[1.02]"
+    loading="lazy"
+  />
+)}
             </div>
           ))}
         </div>
