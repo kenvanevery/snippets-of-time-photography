@@ -43,7 +43,7 @@ galleryName: "Beauty of Ordinary Things",
 description:
   "A vibrant red bicycle emerges from lush greenery and flowers, transforming an ordinary garden scene into an unexpected moment of color and beauty.",
 image: "/images/galleries/beauty-of-ordinary-things/Red-Bicycle-Garden.jpg",
-  printMaster: "",
+  printMaster: "/print-masters/Bicycle.jpg",
 
   products: {
     "Gallery Wrap Canvas": {
@@ -76,7 +76,7 @@ image: "/images/galleries/beauty-of-ordinary-things/Red-Bicycle-Garden.jpg",
   description:
     "The Mackinac Bridge rises above the Straits of Mackinac, mirrored in the quiet water below in a distinctive view of one of Michigan's most recognizable landmarks.",
   image: "/images/galleries/northern-michigan/Mackinac-Bridge-Reflections.jpg",
-  printMaster: "",
+  printMaster: "/print-masters/Bridge and reflections.jpeg",
 
   products: {
     "Gallery Wrap Canvas": {
