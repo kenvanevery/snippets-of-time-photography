@@ -111,7 +111,11 @@ const canvasOptions = Object.entries(
 }, [selectedFinish, canvasOptions]);
 
   const [selectedSize, setSelectedSize] = useState("20×30");
-
+const [showWallPreview, setShowWallPreview] = useState(false);
+const [roomImage, setRoomImage] = useState<string | null>(null);
+const [wallX, setWallX] = useState(50);
+const [wallY, setWallY] = useState(50);
+const [wallWidth, setWallWidth] = useState(30);
   const currentOption =
     currentFinish.options.find((option) => option.size === selectedSize) ??
     currentFinish.options[0];
@@ -165,7 +169,7 @@ async function handleCheckout() {
 
   <button
     type="button"
-    onClick={() => alert("View on Your Wall preview coming soon.")}
+   onClick={() => setShowWallPreview(true)}
     className="rounded-full bg-[#d6b76a] px-6 py-3 text-sm font-medium text-black transition hover:brightness-110 sm:px-8"
   >
     View on Your Wall
@@ -339,6 +343,128 @@ async function handleCheckout() {
           </div>
         </div>
       </section>
+      {showWallPreview && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
+    <div className="relative w-full max-w-6xl rounded-2xl border border-zinc-700 bg-zinc-950 p-6 shadow-2xl">
+      <div className="mb-5 flex items-center justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-amber-300">
+            Snippets of Time Photography
+          </p>
+          <h2 className="mt-2 text-2xl font-light text-white">
+            View on Your Wall
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => {
+            setShowWallPreview(false);
+            setRoomImage(null);
+          }}
+          className="rounded-full border border-zinc-700 px-4 py-2 text-sm text-white hover:border-amber-300 hover:text-amber-300"
+        >
+          Close
+        </button>
+      </div>
+
+      {!roomImage ? (
+        <div className="flex min-h-[420px] flex-col items-center justify-center rounded-xl border border-dashed border-zinc-700 bg-zinc-900/50 p-8 text-center">
+          <p className="mb-2 text-xl text-white">
+            Upload a photo of your wall
+          </p>
+
+          <p className="mb-6 max-w-xl text-sm leading-6 text-zinc-400">
+            Use a straight-on photo of the room for the best preview.
+          </p>
+
+          <label className="cursor-pointer rounded-full bg-[#d6b76a] px-7 py-3 text-sm font-medium text-black hover:brightness-110">
+            Choose Room Photo
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+
+                if (file) {
+                  setRoomImage(URL.createObjectURL(file));
+                }
+              }}
+            />
+          </label>
+        </div>
+      ) : (
+        <div className="relative overflow-hidden rounded-xl bg-black">
+          <img
+            src={roomImage}
+            alt="Room preview"
+            className="max-h-[70vh] w-full object-contain"
+          />
+
+          <img
+  src={artwork.image}
+  alt={artwork.title}
+  className="absolute -translate-x-1/2 -translate-y-1/2 border-4 border-white shadow-2xl"
+  style={{
+    left: `${wallX}%`,
+    top: `${wallY}%`,
+    width: `${wallWidth}%`,
+  }}
+/><div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 flex-wrap items-center justify-center gap-2 rounded-full bg-black/70 px-4 py-3 backdrop-blur">
+  <button
+    type="button"
+    onClick={() => setWallX((value) => Math.max(10, value - 5))}
+    className="rounded-full border border-zinc-600 px-3 py-2 text-sm text-white hover:border-amber-300"
+  >
+    ←
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setWallX((value) => Math.min(90, value + 5))}
+    className="rounded-full border border-zinc-600 px-3 py-2 text-sm text-white hover:border-amber-300"
+  >
+    →
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setWallY((value) => Math.max(10, value - 5))}
+    className="rounded-full border border-zinc-600 px-3 py-2 text-sm text-white hover:border-amber-300"
+  >
+    ↑
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setWallY((value) => Math.min(90, value + 5))}
+    className="rounded-full border border-zinc-600 px-3 py-2 text-sm text-white hover:border-amber-300"
+  >
+    ↓
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setWallWidth((value) => Math.max(10, value - 5))}
+    className="rounded-full border border-zinc-600 px-3 py-2 text-sm text-white hover:border-amber-300"
+  >
+    Smaller
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setWallWidth((value) => Math.min(70, value + 5))}
+    className="rounded-full border border-zinc-600 px-3 py-2 text-sm text-white hover:border-amber-300"
+  >
+    Larger
+  </button>
+</div>
+        </div>
+      )}
+    </div>
+  </div>
+)}
     </main>
   );
 }
