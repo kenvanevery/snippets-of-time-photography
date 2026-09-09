@@ -963,6 +963,38 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     },
   },
 },
+"northern-michigan-farm-winter": {
+  title: "Northern Michigan Farm Country in Winter",
+  location: "Northern Michigan",
+  galleryHref: "/galleries/northern-michigan",
+  galleryName: "Northern Michigan",
+  description:
+    "A quiet Northern Michigan farm landscape rests beneath a blanket of winter snow.",
+  image: "/images/galleries/northern-michigan/northern-michigan-farm-winter.jpg",
+  printMaster: "print-masters/Northern-Michigan-Farm-Country-in-Winter-PRINT.jpg",
+
+  products: {
+    "Gallery Wrap Canvas": {
+      sizes: {
+        "12×18": {
+          retailPrice: 199,
+        },
+        "16×24": {
+          retailPrice: 279,
+        },
+        "20×30": {
+          retailPrice: 349,
+        },
+        "24×36": {
+          retailPrice: 499,
+        },
+        "40×60": {
+          retailPrice: 1199,
+        },
+      },
+    },
+  },
+},
   "tunnel-of-trees": {
     title: "Tunnel of Trees",
     location: "Northern Michigan",
