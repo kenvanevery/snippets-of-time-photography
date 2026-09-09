@@ -35,7 +35,7 @@ const photos = [
     slug: "crisp-point-driftwood",
   },
   {
-    src: "/images/galleries/upper-peninsula/lighthouse Crisp Point.jpg",
+ src: "/images/galleries/upper-peninsula/Lighthouse Crisp Point.jpg",
     alt: "Lighthouse Crisp Point",
     slug: "crisp-point-lighthouse",
   },
@@ -75,7 +75,7 @@ const photos = [
     slug: "lake-superior",
   },
   {
-    src: "/images/galleries/upper-peninsula/Lighthouse Crisp Point.jpg",
+    src: "/images/galleries/upper-peninsula/Crisp Point_.jpg",
     alt: "Lighthouse Crisp Point",
     slug: "crisp-point",
   },
