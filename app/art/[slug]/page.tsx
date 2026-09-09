@@ -444,21 +444,34 @@ async function handleCheckout() {
     ↓
   </button>
 
-  <button
-    type="button"
-    onClick={() => setWallWidth((value) => Math.max(10, value - 5))}
-    className="rounded-full border border-zinc-600 px-3 py-2 text-sm text-white hover:border-amber-300"
-  >
-    Smaller
-  </button>
+ <div className="flex flex-wrap items-center justify-center gap-2">
+  {currentFinish.options.map((option) => (
+    <button
+      key={option.size}
+      type="button"
+      onClick={() => {
+        setSelectedSize(option.size);
 
-  <button
-    type="button"
-    onClick={() => setWallWidth((value) => Math.min(70, value + 5))}
-    className="rounded-full border border-zinc-600 px-3 py-2 text-sm text-white hover:border-amber-300"
-  >
-    Larger
-  </button>
+        const sizeScale: Record<string, number> = {
+          "12×18": 18,
+          "16×24": 24,
+          "20×30": 30,
+          "24×36": 36,
+          "40×60": 50,
+        };
+
+        setWallWidth(sizeScale[option.size] ?? 30);
+      }}
+      className={`rounded-full border px-3 py-2 text-sm transition ${
+        selectedSize === option.size
+          ? "border-amber-300 bg-amber-300 text-black"
+          : "border-zinc-600 text-white hover:border-amber-300"
+      }`}
+    >
+      {option.size}
+    </button>
+  ))}
+</div>
 </div>
         </div>
       )}
