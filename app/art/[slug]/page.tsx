@@ -154,6 +154,23 @@ async function handleCheckout() {
   return (
     <main className="min-h-screen bg-black text-white">
       <section className="mx-auto max-w-7xl px-6 py-12 md:py-16">
+        <div className="mb-10 flex items-center justify-between gap-6">
+  <Link href="/" className="shrink-0">
+    <img
+      src="/branding/logo/logo-gold.png"
+      alt="Snippets of Time Photography"
+      className="h-16 w-auto sm:h-20"
+    />
+  </Link>
+
+  <button
+    type="button"
+    onClick={() => alert("View on Your Wall preview coming soon.")}
+    className="rounded-full bg-[#d6b76a] px-6 py-3 text-sm font-medium text-black transition hover:brightness-110 sm:px-8"
+  >
+    View on Your Wall
+  </button>
+</div>
         <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
           <Link
             href={artwork.galleryHref}
