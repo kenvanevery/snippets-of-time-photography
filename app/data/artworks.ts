@@ -1166,7 +1166,7 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     galleryName: "Upper Peninsula",
     description:
       "Crisp Point Lighthouse rises above the rocky Lake Superior shoreline beneath a clear blue sky.",
-    image: "/images/galleries/upper-peninsula/Lighthouse Crisp Point.jpg",
+    image: "/images/galleries/upper-peninsula/Crisp Point_.jpg",
     printMaster: "print-masters/Crisp-Point-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
