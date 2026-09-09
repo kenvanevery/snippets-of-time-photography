@@ -110,7 +110,7 @@ const photos = [
     slug: "miners-castle",
   },
   {
-    src: "/images/galleries/upper-peninsula/Miners Castle_Birch.jpg",
+   src: "/images/galleries/upper-peninsula/Miners Castle Birch.jpg",
     alt: "Miners Castle Birch",
     slug: "miners-castle-birch",
   },

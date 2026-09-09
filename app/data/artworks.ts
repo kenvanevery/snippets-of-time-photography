@@ -1474,7 +1474,7 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     galleryName: "Upper Peninsula",
     description:
       "A birch tree frames the sandstone cliffs and blue waters surrounding Miners Castle at Pictured Rocks.",
-    image: "/images/galleries/upper-peninsula/Miners Castle_Birch.jpg",
+    image: "/images/galleries/upper-peninsula/Miners Castle Birch.jpg",
     printMaster: "print-masters/Miners-Castle-Birch-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
