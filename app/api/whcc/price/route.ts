@@ -239,7 +239,7 @@ if (!confirmationID) {
   );
 }
 const submitResponse = await fetch(
-  `https://sandbox.apps.whcc.com/api/OrderImport/Submit/${confirmationID}`,
+`${WHCC_BASE_URL}/api/OrderImport/Submit/${confirmationID}`,
   {
     method: "POST",
     headers: {
