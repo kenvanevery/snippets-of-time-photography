@@ -238,6 +238,14 @@ if (!confirmationID) {
     { status: 500 }
   );
 }
+if (process.env.WHCC_IMPORT_ONLY_TEST === "true") {
+  return NextResponse.json({
+    success: true,
+    testMode: "import-only",
+    confirmationID,
+    whccResponse: importData,
+  });
+}
 const submitResponse = await fetch(
 `${WHCC_BASE_URL}/api/OrderImport/Submit/${confirmationID}`,
   {
