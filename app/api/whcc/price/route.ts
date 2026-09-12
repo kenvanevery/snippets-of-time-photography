@@ -67,7 +67,7 @@ if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
       }
     );
 
-    // Authenticate with WHCC sandbox.
+    // Authenticate with WHCC.
     const tokenUrl = new URL(`${WHCC_BASE_URL}/api/AccessToken`);
 
     tokenUrl.searchParams.set("grant_type", "consumer_credentials");
@@ -272,7 +272,7 @@ if (!submitResponse.ok) {
       success: true,
 
       message:
-        "WHCC sandbox OrderImport succeeded. ORDER WAS NOT SUBMITTED.",
+        "WHCC production order submitted successfully.",
 
       product: {
         photograph: "Crisp Point Lighthouse",

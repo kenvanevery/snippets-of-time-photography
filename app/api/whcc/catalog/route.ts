@@ -1,9 +1,23 @@
 import { NextResponse } from "next/server";
 
-const WHCC_BASE_URL = "https://sandbox.apps.whcc.com";
+const WHCC_BASE_URL =
+  process.env.WHCC_BASE_URL || "https://sandbox.apps.whcc.com";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const requestedSize = searchParams.get("size") || "20x30";
+    const requestedFinish = searchParams.get("finish") || "Gallery Wrap Canvas";
+   const categoryMap: Record<string, string> = {
+  "Gallery Wrap Canvas": "Gallery Wraps",
+  "Metal Print": "Metal Prints",
+  "Acrylic Print": "Acrylic Prints",
+  "Fine Art Print": "Fine Art Prints",
+};
+
+const requestedCategoryName =
+  categoryMap[requestedFinish] || requestedFinish;
+ 
     const consumerKey = process.env.WHCC_CONSUMER_KEY;
     const consumerSecret = process.env.WHCC_CONSUMER_SECRET;
 
@@ -76,7 +90,7 @@ const categories = Array.isArray(catalog.Categories)
   : [];
 
 const galleryWrapCategory = categories.find(
-  (category: any) => category.Name === "Gallery Wraps"
+  (category: any) => category.Name === requestedCategoryName
 );
 
 const galleryWrapProducts = Array.isArray(galleryWrapCategory?.ProductList)
@@ -85,11 +99,12 @@ const galleryWrapProducts = Array.isArray(galleryWrapCategory?.ProductList)
 
 const targetProduct = galleryWrapProducts.find(
   (product: any) =>
-    product.Name?.includes("Fine Art Canvas Gallery Wrap 20x30")
+product.Name?.includes(requestedSize)
 );
 
 return NextResponse.json({
   success: true,
+  availableCategories: categories.map((category: any) => category.Name),
   categoryName: galleryWrapCategory?.Name ?? null,
   productCount: galleryWrapProducts.length,
   targetProduct: targetProduct
