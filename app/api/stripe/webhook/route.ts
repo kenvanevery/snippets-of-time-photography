@@ -40,6 +40,20 @@ if (event.type === "checkout.session.completed") {
   if (session.payment_status !== "paid") {
   return NextResponse.json({ received: true });
 }
+// Manually fulfilled through WHCC: order #22592245.
+// Acknowledge retries without submitting another print order.
+const paymentIntentId =
+  typeof session.payment_intent === "string"
+    ? session.payment_intent
+    : session.payment_intent?.id;
+
+if (
+  session.livemode &&
+  paymentIntentId === "pi_3UFbUDJXgIMKkYrI1KPiYrXK"
+) {
+  console.log("Manually fulfilled: WHCC order #22592245", session.id);
+  return NextResponse.json({ received: true });
+}
 const redis = createClient({
   url: process.env.REDIS_URL,
 });
