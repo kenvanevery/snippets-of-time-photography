@@ -1,19 +1,92 @@
 import { NextResponse } from "next/server";
 import { list, issueSignedToken, presignUrl } from "@vercel/blob";
-
+import { artworks } from "@/app/data/artworks";
+import { createHash } from "node:crypto";
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const WHCC_BASE_URL =
   process.env.WHCC_BASE_URL || "https://sandbox.apps.whcc.com";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const checkoutSessionId = body.checkoutSessionId;
+
+if (
+  typeof checkoutSessionId !== "string" ||
+  !/^cs_(live|test)_[A-Za-z0-9]+$/.test(checkoutSessionId)
+) {
+  return NextResponse.json(
+    { error: "Missing or invalid checkout session ID." },
+    { status: 400 }
+  );
+}
+const paidSession = await stripe.checkout.sessions.retrieve(
+  checkoutSessionId
+);
+
+if (
+  paidSession.mode !== "payment" ||
+  paidSession.status !== "complete" ||
+  paidSession.payment_status !== "paid" ||
+  paidSession.currency !== "usd" ||
+  paidSession.amount_total !== 7900
+) {
+  return NextResponse.json(
+    { error: "A completed $79 USD payment is required." },
+    { status: 400 }
+  );
+}
+const whccIsSandbox =
+  new URL(WHCC_BASE_URL).hostname === "sandbox.apps.whcc.com";
+
+if (paidSession.livemode === whccIsSandbox) {
+  return NextResponse.json(
+    { error: "Stripe and WHCC environments do not match." },
+    { status: 400 }
+  );
+}
+const paymentIntentId =
+  typeof paidSession.payment_intent === "string"
+    ? paidSession.payment_intent
+    : paidSession.payment_intent?.id;
+
+if (
+  paidSession.livemode &&
+  paymentIntentId === "pi_3UFbUDJXgIMKkYrI1KPiYrXK"
+) {
+  return NextResponse.json(
+    { error: "Already fulfilled manually: WHCC order #22592245." },
+    { status: 409 }
+  );
+}
+// Use the order details stored by Stripe.
+body.finish = paidSession.metadata?.finish;
+body.size = paidSession.metadata?.size;
+body.artworkSlug = paidSession.metadata?.artwork_slug;
+body.shippingDetails =
+  paidSession.collected_information?.shipping_details;
+body.customerPhone = paidSession.customer_details?.phone;
 const finish = body.finish;
-const size = body.size;
+const size =
+  typeof body.size === "string"
+    ? body.size.replace(/×/g, "x").replace(/\s+/g, "").toLowerCase()
+    : "";
+if (finish !== "Fine Art Print" || size !== "12x18") {
+  return NextResponse.json(
+    { error: "Automatic fulfillment currently supports only 12x18 Fine Art Prints." },
+    { status: 400 }
+  );
+}
 const shippingDetails = body.shippingDetails;
 const customerPhone = body.customerPhone;
-if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
+const artworkSlug = body.artworkSlug;
+const artwork = Object.entries(artworks).find(
+  ([slug]) => slug === artworkSlug
+)?.[1];
+if (!artwork || !artwork.printMaster) {
   return NextResponse.json(
-    { error: "WHCC pricing is currently configured for the 20x30 Gallery Wrap Canvas test only." },
+    { error: "Unknown artwork or missing print master." },
     { status: 400 }
   );
 }
@@ -30,14 +103,14 @@ if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
 
     // Find our private Crisp Point print master.
     const blobResult = await list({
-      prefix: "print-masters/Crisp-Point-Lighthouse-PRINT.jpg",
+      prefix: artwork!.printMaster,
       token: blobToken,
     });
 
     const crispPointBlob = blobResult.blobs.find(
       (blob) =>
-        blob.pathname ===
-        "print-masters/Crisp-Point-Lighthouse-PRINT.jpg"
+        blob.pathname === artwork!.printMaster
+        
     );
 
     if (!crispPointBlob) {
@@ -66,7 +139,21 @@ if (finish !== "Gallery Wrap Canvas" || size !== "20×30") {
         access: "private",
       }
     );
+const imageResponse = await fetch(signedImageUrl, {
+  cache: "no-store",
+});
 
+if (!imageResponse.ok) {
+  return NextResponse.json(
+    { error: "Unable to read the selected print master." },
+    { status: 500 }
+  );
+}
+
+const imageBytes = Buffer.from(await imageResponse.arrayBuffer());
+const imageHash = createHash("md5")
+  .update(imageBytes)
+  .digest("hex");
     // Authenticate with WHCC.
     const tokenUrl = new URL(`${WHCC_BASE_URL}/api/AccessToken`);
 
@@ -116,7 +203,7 @@ const orderRequest = {
   {
     SequenceNumber: 1,
     Instructions: null,
-    Reference: "SOT Crisp 20x30 Test",
+    Reference: `SOT ${artworkSlug} ${size} ${finish}`,
 
           SendNotificationEmailAddress: null,
           SendNotificationEmailToAccount: true,
@@ -156,16 +243,16 @@ const orderRequest = {
           OrderItems: [
             {
               // Fine Art Canvas Gallery Wrap 20x30, 1.5"
-              ProductUID: 89,
+              ProductUID: 431,
               Quantity: 1,
 ItemAssets: [
   {
   ProductNodeID: 10000,
              AssetPath: signedImageUrl,
 
-ImageHash: "52E813FDD2B91E937DE7C509D2AEA8A6",
+ImageHash: imageHash,
 
-PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
+PrintedFileName: artwork!.printMaster.split("/").pop()!,
 
                   AutoRotate: true,
                 },
@@ -173,9 +260,8 @@ PrintedFileName: "Crisp-Point-Lighthouse-PRINT.jpg",
 
               // Premium Gallery Wrap + Matte Laminate.
               ItemAttributes: [
-               { AttributeUID: 126 },
-{ AttributeUID: 131 }, 
-              ],
+  { AttributeUID: 2061 },
+],
             },
           ],
         },
@@ -275,12 +361,12 @@ if (!submitResponse.ok) {
         "WHCC production order submitted successfully.",
 
       product: {
-        photograph: "Crisp Point Lighthouse",
-        finish: "Premium Gallery Wrap",
-        protection: "Matte Laminate",
-        size: "20x30",
-        retailPrice: 349,
-      },
+  photograph: artwork.title,
+  finish,
+  paper: "Smooth Matte",
+  size,
+  retailPrice: 79,
+},
 
       whccPricing: {
         subTotal: order?.SubTotal ?? null,

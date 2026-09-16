@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
-
+import { artworks } from "@/app/data/artworks";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const prices: Record<string, Record<string, number>> = {
@@ -45,8 +45,18 @@ export async function POST(request: Request) {
 
     const finish = body.finish;
 const size = body.size;
-const artworkTitle = body.artworkTitle;
+
 const artworkSlug = body.artworkSlug;
+const artwork = Object.entries(artworks).find(
+  ([slug]) => slug === artworkSlug
+)?.[1];
+
+if (!artwork || !artwork.printMaster) {
+  return NextResponse.json(
+    { error: "This photograph is not available for ordering." },
+    { status: 400 }
+  );
+}
     if (
       typeof finish !== "string" ||
       typeof size !== "string" ||
@@ -58,7 +68,13 @@ const artworkSlug = body.artworkSlug;
         { status: 400 }
       );
     }
-
+if (finish !== "Fine Art Print" || size !== "12×18") {
+  return NextResponse.json(
+    { error: "This size and finish are temporarily unavailable." },
+    { status: 400 }
+  );
+}
+const artworkTitle = artwork.title;
     const price = prices[finish][size];
 
     const origin = new URL(request.url).origin;
@@ -90,11 +106,11 @@ const artworkSlug = body.artworkSlug;
       },
 
       metadata: {
-        artwork: "Crisp Point Lighthouse",
-        artwork_slug: "crisp-point-lighthouse",
-        finish,
-        size,
-      },
+  artwork: artworkTitle,
+  artwork_slug: artworkSlug,
+  finish,
+  size,
+},
 
     success_url: `${origin}/art/${artworkSlug}?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
 

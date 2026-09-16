@@ -1,10 +1,11 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
-import { createClient } from "redis";
+export const runtime = "nodejs";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 
 export async function POST(request: Request) {
+  try {
       const body = await request.text();
       const signature = request.headers.get("stripe-signature");
       if (!signature) {
@@ -54,30 +55,6 @@ if (
   console.log("Manually fulfilled: WHCC order #22592245", session.id);
   return NextResponse.json({ received: true });
 }
-const redis = createClient({
-  url: process.env.REDIS_URL,
-});
-
-if (!redis.isOpen) {
-  await redis.connect();
-}
-const finish = session.metadata?.finish;
-const size = session.metadata?.size;
-const artworkSlug = session.metadata?.artwork_slug;
-const shippingDetails =
-  session.collected_information?.shipping_details;
-
-const customerPhone = session.customer_details?.phone;
-if (!finish || !size || !artworkSlug) {
-  console.error("Missing Stripe order metadata.");
-  return NextResponse.json({ received: true });
-}const orderKey = `stripe-order:${session.id}`;
-const alreadyProcessed = await redis.get(orderKey);
-
-if (alreadyProcessed) {
-  console.log("Stripe order already processed:", session.id);
-  return NextResponse.json({ received: true });
-}
 const whccResponse = await fetch(
   `${new URL(request.url).origin}/api/whcc/price`,
   {
@@ -85,26 +62,29 @@ const whccResponse = await fetch(
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-  finish,
-  size,
-  shippingDetails,
-  customerPhone,
-}),
+    body: JSON.stringify({ checkoutSessionId: session.id }),
   }
 );
 
 const whccData = await whccResponse.json();
-if (!whccResponse.ok) {
+if (
+  !whccResponse.ok ||
+  whccData.success !== true ||
+  (session.livemode ? whccData.submittedForProduction !== true : whccData.submittedToSandbox !== true)
+) {
   console.error("WHCC fulfillment failed:", whccData);
   return NextResponse.json(
     { error: "WHCC fulfillment failed." },
     { status: 500 }
   );
-}await redis.set(orderKey, "processed");
+}
 
 console.log("WHCC response after paid Stripe order:", whccData);
 console.log("Stripe checkout completed:", session.id);
 }
 return NextResponse.json({ received: true });
-      }
+        } catch {
+    console.error("Stripe fulfillment handler failed.");
+    return NextResponse.json({ error: "Fulfillment requires attention." }, { status: 500 });
+  }
+}
