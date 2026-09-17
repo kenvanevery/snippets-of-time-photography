@@ -3,11 +3,16 @@ import { list, issueSignedToken, presignUrl } from "@vercel/blob";
 import { artworks } from "@/app/data/artworks";
 import { createHash } from "node:crypto";
 import Stripe from "stripe";
+import { createClient } from "redis";
+export const runtime = "nodejs";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const WHCC_BASE_URL =
   process.env.WHCC_BASE_URL || "https://sandbox.apps.whcc.com";
 
 export async function POST(request: Request) {
+  let redis: ReturnType<typeof createClient> | undefined;
+  let reservationKey: string | undefined;
+  let confirmationForReview: string | undefined;
   try {
     const body = await request.json();
     const checkoutSessionId = body.checkoutSessionId;
@@ -59,6 +64,38 @@ if (
     { error: "Already fulfilled manually: WHCC order #22592245." },
     { status: 409 }
   );
+}
+// Honor existing orders before doing any new fulfillment work.
+if (!process.env.REDIS_URL) {
+  throw new Error("Redis configuration is required.");
+}
+redis = createClient({
+  url: process.env.REDIS_URL,
+  socket: { connectTimeout: 5000, reconnectStrategy: false },
+  disableOfflineQueue: true,
+});
+redis.on("error", () => console.error("Fulfillment Redis connection error."));
+await redis.connect();
+const orderKey = `stripe-order:${checkoutSessionId}`;
+const fulfillmentKey = `whcc-fulfillment:${checkoutSessionId}`;
+const prior = await redis.get(fulfillmentKey);
+if (prior) {
+  const record = JSON.parse(prior);
+  if (record.state === "submitted" && record.result) {
+    return NextResponse.json(record.result);
+  }
+  return NextResponse.json({
+    success: false,
+    error: "Fulfillment is reserved. Review the existing WHCC order before retrying.",
+    confirmationID: record.confirmationID ?? null,
+  }, { status: 409 });
+}
+if (await redis.get(orderKey)) {
+  return NextResponse.json({
+    success: true, alreadyProcessed: true,
+    submittedForProduction: paidSession.livemode,
+    submittedToSandbox: !paidSession.livemode,
+  });
 }
 // Use the order details stored by Stripe.
 body.finish = paidSession.metadata?.finish;
@@ -170,7 +207,7 @@ const imageHash = createHash("md5")
   const tokenErrorText = await tokenResponse.text();
 
  console.error(
-  `WHCC TOKEN ERROR ${tokenResponse.status}: ${tokenErrorText}`
+  `WHCC TOKEN ERROR ${tokenResponse.status}`
 );
 
   return NextResponse.json(
@@ -178,7 +215,7 @@ const imageHash = createHash("md5")
       success: false,
       error: "WHCC authentication failed.",
       status: tokenResponse.status,
-      details: tokenErrorText,
+
     },
     { status: 500 }
   );
@@ -195,15 +232,15 @@ const imageHash = createHash("md5")
       );
     }
 
-  // Crisp Point 20x30 Premium Gallery Wrap test order.
+  // Fine Art Print 12x18, Smooth Matte; print only.
 const orderRequest = {
-  EntryId: `SOT-${Date.now()}`,
+  EntryId: `SOT-${createHash("sha256").update(checkoutSessionId).digest("hex").slice(0, 24)}`,
 
   Orders: [
   {
     SequenceNumber: 1,
     Instructions: null,
-    Reference: `SOT ${artworkSlug} ${size} ${finish}`,
+    Reference: `SOT-${createHash("sha256").update(checkoutSessionId).digest("hex").slice(0, 24)}`,
 
           SendNotificationEmailAddress: null,
           SendNotificationEmailToAccount: true,
@@ -242,7 +279,7 @@ const orderRequest = {
 
           OrderItems: [
             {
-              // Fine Art Canvas Gallery Wrap 20x30, 1.5"
+              // Fine Art Print 12x18
               ProductUID: 431,
               Quantity: 1,
 ItemAssets: [
@@ -258,7 +295,7 @@ PrintedFileName: artwork!.printMaster.split("/").pop()!,
                 },
               ],
 
-              // Premium Gallery Wrap + Matte Laminate.
+              // Smooth Matte paper.
               ItemAttributes: [
   { AttributeUID: 2061 },
 ],
@@ -273,6 +310,17 @@ PrintedFileName: artwork!.printMaster.split("/").pop()!,
 
 
   
+    // No expiry: an ambiguous remote result must never silently unlock an order.
+    const reservation = {
+      state: "importing", checkoutSessionId,
+      entryId: orderRequest.EntryId, startedAt: new Date().toISOString(),
+    };
+    const claimed = await redis.set(fulfillmentKey, JSON.stringify(reservation), { NX: true });
+    if (claimed !== "OK") {
+      return NextResponse.json({ success: false, error: "Fulfillment already reserved." }, { status: 409 });
+    }
+    reservationKey = fulfillmentKey;
+
     const importResponse = await fetch(
       `${WHCC_BASE_URL}/api/OrderImport`,
       {
@@ -298,7 +346,7 @@ PrintedFileName: artwork!.printMaster.split("/").pop()!,
 
     if (!importResponse.ok) {
   console.error(
-    `WHCC ORDERIMPORT ERROR ${importResponse.status}: ${JSON.stringify(importData)}`
+    `WHCC ORDERIMPORT ERROR ${importResponse.status}`
   );
 
   return NextResponse.json(
@@ -306,7 +354,7 @@ PrintedFileName: artwork!.printMaster.split("/").pop()!,
       success: false,
       error: "WHCC OrderImport failed.",
       status: importResponse.status,
-      whccResponse: importData,
+
     },
     { status: 500 }
   );
@@ -324,6 +372,10 @@ if (!confirmationID) {
     { status: 500 }
   );
 }
+confirmationForReview = confirmationID;
+await redis.set(fulfillmentKey, JSON.stringify({
+  ...reservation, state: "imported", confirmationID,
+}));
 if (process.env.WHCC_IMPORT_ONLY_TEST === "true") {
   return NextResponse.json({
     success: true,
@@ -332,6 +384,9 @@ if (process.env.WHCC_IMPORT_ONLY_TEST === "true") {
     whccResponse: importData,
   });
 }
+await redis.set(fulfillmentKey, JSON.stringify({
+  ...reservation, state: "submitting", confirmationID,
+}));
 const submitResponse = await fetch(
 `${WHCC_BASE_URL}/api/OrderImport/Submit/${confirmationID}`,
   {
@@ -349,16 +404,20 @@ if (!submitResponse.ok) {
       success: false,
       error: "WHCC OrderSubmit failed.",
       status: submitResponse.status,
-      whccResponse: submitText,
+
     },
     { status: 500 }
   );
 }
-    return NextResponse.json({
+const submitData = JSON.parse(submitText);
+if (submitData.ConfirmedOrders !== 1 || submitData.ConfirmationID !== confirmationID) {
+  throw new Error("WHCC submission needs reconciliation.");
+}
+    const result = {
       success: true,
 
       message:
-        "WHCC production order submitted successfully.",
+        paidSession.livemode ? "WHCC production order submitted successfully." : "WHCC sandbox order submitted successfully.",
 
       product: {
   photograph: artwork.title,
@@ -377,19 +436,28 @@ if (!submitResponse.ok) {
 
       confirmationID: importData?.ConfirmationID ?? null,
 
-      submittedForProduction: true,
-    });
+      submittedForProduction: paidSession.livemode,
+      submittedToSandbox: !paidSession.livemode,
+    };
+    await redis.set(fulfillmentKey, JSON.stringify({
+      ...reservation, state: "submitted", confirmationID, result,
+    }));
+    return NextResponse.json(result);
   } catch (error) {
-    console.error("WHCC OrderImport error:", error);
+    console.error("WHCC fulfillment requires attention.", { reservationKey, confirmationID: confirmationForReview });
 
     return NextResponse.json(
       {
         success: false,
         error: "Unexpected WHCC OrderImport error.",
-        details:
-          error instanceof Error ? error.message : "Unknown error",
+        requiresReview: Boolean(reservationKey),
+        confirmationID: confirmationForReview ?? null,
       },
       { status: 500 }
     );
+  } finally {
+    if (redis?.isOpen) {
+      try { await redis.quit(); } catch { /* Reservation remains for review. */ }
+    }
   }
 }
