@@ -148,7 +148,7 @@ async function handleCheckout() {
   const data = await response.json();
 
   if (!response.ok || !data.url) {
-    alert("Unable to start checkout. Please try again.");
+    alert(data.error ?? "Unable to start checkout. Please try again.");
     return;
   }
 

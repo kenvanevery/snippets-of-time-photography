@@ -1,43 +1,8 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { artworks } from "@/app/data/artworks";
+import { getPrintProduct } from "@/app/lib/print-products";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
-const prices: Record<string, Record<string, number>> = {
-  "Fine Art Print": {
-    "12×18": 79,
-    "16×24": 179,
-    "20×30": 229,
-    "24×36": 349,
-    "30×45": 449,
-    "40×60": 749,
-  },
-
-  "Gallery Wrap Canvas": {
-    "12×18": 199,
-    "16×24": 279,
-    "20×30": 349,
-    "24×36": 499,
-    "40×60": 1199,
-  },
-
-  "Metal Print": {
-    "12×18": 179,
-    "16×24": 279,
-    "20×30": 399,
-    "24×36": 549,
-    "30×45": 799,
-    "40×60": 1499,
-  },
-
-  "Acrylic Print": {
-    "12×18": 299,
-    "16×24": 399,
-    "20×30": 549,
-    "24×36": 799,
-    "40×60": 1999,
-  },
-};
 
 export async function POST(request: Request) {
   try {
@@ -57,25 +22,21 @@ if (!artwork || !artwork.printMaster) {
     { status: 400 }
   );
 }
-    if (
-      typeof finish !== "string" ||
-      typeof size !== "string" ||
-      !prices[finish] ||
-      prices[finish][size] === undefined
-    ) {
+    if (typeof finish !== "string" || typeof size !== "string") {
       return NextResponse.json(
         { error: "Invalid product selection." },
         { status: 400 }
       );
     }
-if (finish !== "Fine Art Print" || size !== "12×18") {
-  return NextResponse.json(
-    { error: "This size and finish are temporarily unavailable." },
-    { status: 400 }
-  );
-}
+    const product = getPrintProduct(finish, size);
+    if (!product) {
+      return NextResponse.json(
+        { error: "This size and finish are unavailable." },
+        { status: 400 }
+      );
+    }
 const artworkTitle = artwork.title;
-    const price = prices[finish][size];
+    const price = product.retailPrice;
 
     const origin = new URL(request.url).origin;
 
@@ -117,12 +78,6 @@ const artworkTitle = artwork.title;
       cancel_url: `${origin}/art/${artworkSlug}?checkout=cancelled`,
    });
 
-console.log("Checkout metadata:", {
-  artwork_slug: "crisp-point-lighthouse",
-  finish,
-  size,
-});
-    console.error("Stripe checkout error:",);
 return NextResponse.json({
   url: session.url,
 });

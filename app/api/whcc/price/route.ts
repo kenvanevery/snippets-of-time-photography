@@ -4,6 +4,7 @@ import { artworks } from "@/app/data/artworks";
 import { createHash } from "node:crypto";
 import Stripe from "stripe";
 import { createClient } from "redis";
+import { getPrintProduct, normalizePrintSize } from "@/app/lib/print-products";
 export const runtime = "nodejs";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const WHCC_BASE_URL =
@@ -30,15 +31,32 @@ const paidSession = await stripe.checkout.sessions.retrieve(
   checkoutSessionId
 );
 
+const finish = paidSession.metadata?.finish;
+const size = paidSession.metadata?.size;
+const artworkSlug = paidSession.metadata?.artwork_slug;
+if (!finish || !size || !artworkSlug) {
+  return NextResponse.json(
+    { error: "Checkout is missing fulfillment details." },
+    { status: 400 }
+  );
+}
+const product = getPrintProduct(finish, size);
+if (!product) {
+  return NextResponse.json(
+    { error: "Unsupported print selection." },
+    { status: 400 }
+  );
+}
+
 if (
   paidSession.mode !== "payment" ||
   paidSession.status !== "complete" ||
   paidSession.payment_status !== "paid" ||
   paidSession.currency !== "usd" ||
-  paidSession.amount_total !== 7900
+  paidSession.amount_total !== product.retailPrice * 100
 ) {
   return NextResponse.json(
-    { error: "A completed $79 USD payment is required." },
+    { error: "A completed payment for the selected product is required." },
     { status: 400 }
   );
 }
@@ -97,27 +115,12 @@ if (await redis.get(orderKey)) {
     submittedToSandbox: !paidSession.livemode,
   });
 }
-// Use the order details stored by Stripe.
-body.finish = paidSession.metadata?.finish;
-body.size = paidSession.metadata?.size;
-body.artworkSlug = paidSession.metadata?.artwork_slug;
+// Use the shipping details stored by Stripe.
 body.shippingDetails =
   paidSession.collected_information?.shipping_details;
 body.customerPhone = paidSession.customer_details?.phone;
-const finish = body.finish;
-const size =
-  typeof body.size === "string"
-    ? body.size.replace(/×/g, "x").replace(/\s+/g, "").toLowerCase()
-    : "";
-if (finish !== "Fine Art Print" || size !== "12x18") {
-  return NextResponse.json(
-    { error: "Automatic fulfillment currently supports only 12x18 Fine Art Prints." },
-    { status: 400 }
-  );
-}
 const shippingDetails = body.shippingDetails;
 const customerPhone = body.customerPhone;
-const artworkSlug = body.artworkSlug;
 const artwork = Object.entries(artworks).find(
   ([slug]) => slug === artworkSlug
 )?.[1];
@@ -232,7 +235,6 @@ const imageHash = createHash("md5")
       );
     }
 
-  // Fine Art Print 12x18, Smooth Matte; print only.
 const orderRequest = {
   EntryId: `SOT-${createHash("sha256").update(checkoutSessionId).digest("hex").slice(0, 24)}`,
 
@@ -279,8 +281,7 @@ const orderRequest = {
 
           OrderItems: [
             {
-              // Fine Art Print 12x18
-              ProductUID: 431,
+              ProductUID: product.productUID,
               Quantity: 1,
 ItemAssets: [
   {
@@ -295,10 +296,9 @@ PrintedFileName: artwork!.printMaster.split("/").pop()!,
                 },
               ],
 
-              // Smooth Matte paper.
-              ItemAttributes: [
-  { AttributeUID: 2061 },
-],
+              ItemAttributes: product.itemAttributeUIDs.map((AttributeUID) => ({
+                AttributeUID,
+              })),
             },
           ],
         },
@@ -422,9 +422,8 @@ if (submitData.ConfirmedOrders !== 1 || submitData.ConfirmationID !== confirmati
       product: {
   photograph: artwork.title,
   finish,
-  paper: "Smooth Matte",
-  size,
-  retailPrice: 79,
+  size: normalizePrintSize(size),
+  retailPrice: product.retailPrice,
 },
 
       whccPricing: {
