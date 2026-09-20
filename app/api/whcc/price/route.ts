@@ -138,17 +138,19 @@ if (!artwork || !artwork.printMaster) {
       return NextResponse.json(
         { error: "Required credentials are missing." },
         { status: 500 }
-      );[p]
+      );
+    }
+
 
     // Find our private Crisp Point print master.
     const blobResult = await list({
-      prefix: artwork!.printMaster,
+      prefix: artwork.printMaster,
       token: blobToken,
     });
 
     const crispPointBlob = blobResult.blobs.find(
       (blob) =>
-        blob.pathname === artwork!.printMaster
+        blob.pathname === artwork.printMaster
         
     );
 
@@ -314,7 +316,7 @@ PrintedFileName: artwork!.printMaster.split("/").pop()!,
       state: "importing", checkoutSessionId,
       entryId: orderRequest.EntryId, startedAt: new Date().toISOString(),
     };
-    const claimed = await redis.set(fulfillmentKey, JSON.stringify(reservation), { NX: true });
+    const claimed = await redis!.set(fulfillmentKey, JSON.stringify(reservation), { NX: true });
     if (claimed !== "OK") {
       return NextResponse.json({ success: false, error: "Fulfillment already reserved." }, { status: 409 });
     }
@@ -372,7 +374,7 @@ if (!confirmationID) {
   );
 }
 confirmationForReview = confirmationID;
-await redis.set(fulfillmentKey, JSON.stringify({
+await redis!.set(fulfillmentKey, JSON.stringify({
   ...reservation, state: "imported", confirmationID,
 }));
 if (process.env.WHCC_IMPORT_ONLY_TEST === "true") {
@@ -383,7 +385,7 @@ if (process.env.WHCC_IMPORT_ONLY_TEST === "true") {
     whccResponse: importData,
   });
 }
-await redis.set(fulfillmentKey, JSON.stringify({
+await redis!.set(fulfillmentKey, JSON.stringify({
   ...reservation, state: "submitting", confirmationID,
 }));
 const submitResponse = await fetch(
@@ -437,11 +439,11 @@ if (submitData.ConfirmedOrders !== 1 || submitData.ConfirmationID !== confirmati
       submittedForProduction: paidSession.livemode,
       submittedToSandbox: !paidSession.livemode,
     };
-    await redis.set(fulfillmentKey, JSON.stringify({
+    await redis!.set(fulfillmentKey, JSON.stringify({
       ...reservation, state: "submitted", confirmationID, result,
     }));
     return NextResponse.json(result);
-  } catch (error) {
+  }  catch (error) {
     console.error("WHCC fulfillment requires attention.", { reservationKey, confirmationID: confirmationForReview });
 
     return NextResponse.json(
