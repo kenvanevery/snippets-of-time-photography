@@ -138,8 +138,7 @@ if (!artwork || !artwork.printMaster) {
       return NextResponse.json(
         { error: "Required credentials are missing." },
         { status: 500 }
-      );
-    }
+      );[p]
 
     // Find our private Crisp Point print master.
     const blobResult = await list({
