@@ -25,7 +25,7 @@ src: "/images/galleries/northern-michigan/Breakwall-During-Storm.jpg",
     slug: "chief-petoskey-sunset",
   },
  {
-  src: "/images/galleries/northern-michigan/Cherries.jpg",
+  src: "/images/galleries/northern-michigan/cherries.jpg",
   alt: "Fresh Northern Michigan cherries",
   slug: "northern-michigan-cherries",
 },
