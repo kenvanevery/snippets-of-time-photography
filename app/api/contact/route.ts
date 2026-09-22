@@ -5,7 +5,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { name, email, interest, message } = await request.json();
+    const { name, email, interest, message, website } = await request.json();;
+    if (website) {
+  return NextResponse.json({ success: true });
+}
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -13,7 +16,11 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+const messageText = String(message).trim();
 
+if (/^\d+$/.test(messageText)) {
+  return NextResponse.json({ success: true });
+}
     const { error } = await resend.emails.send({
    from: "Snippets of Time Photography <contact@snippetsoftimephotography.com>",
       to: ["contact@snippetsoftimephotography.com"],

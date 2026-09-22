@@ -8,6 +8,7 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [interest, setInterest] = useState("Fine Art & Print Purchase");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
 
  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
   event.preventDefault();
@@ -18,11 +19,12 @@ export default function ContactPage() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name,
-      email,
-      interest,
-      message,
-    }),
+  name,
+  email,
+  interest,
+  message,
+  website,
+}),
   });
 
   if (!response.ok) {
@@ -99,6 +101,18 @@ export default function ContactPage() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-7">
+              <div className="hidden" aria-hidden="true">
+  <label htmlFor="website">Website</label>
+  <input
+    id="website"
+    name="website"
+    type="text"
+    value={website}
+    onChange={(event) => setWebsite(event.target.value)}
+    tabIndex={-1}
+    autoComplete="off"
+  />
+</div>
               <div>
                 <label
                   htmlFor="name"
