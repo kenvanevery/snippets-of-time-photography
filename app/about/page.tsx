@@ -100,7 +100,7 @@ export default function AboutPage() {
 
           <div className="space-y-6 text-lg leading-8 text-gray-300">
             <p>
-              We also want to give a very special thank you to Ken’s sister,
+              We also want to give a very special thank you to Ken’s sister Kathy,
               whose passion for photography played an important role in our own
               journey. She introduced us to so much of what we have come to love
               about photography, generously helped us with equipment and
