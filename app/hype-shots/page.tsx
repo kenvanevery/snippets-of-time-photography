@@ -64,6 +64,45 @@ export default function HypeShotsPage() {
   </div>
 
   <div className="mt-14 border-t border-white/10 pt-12">
+  <h3 className="text-2xl font-light tracking-wide text-white md:text-3xl">
+    Beyond the Game
+  </h3>
+
+  <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-gray-300 md:text-lg md:leading-8">
+    Hype Shots aren&apos;t just for athletes. Dramatic lighting, color,
+    atmosphere, and movement create cinematic portraits for dancers,
+    performers, and anyone ready to step into the spotlight.
+  </p>
+
+<div className="mt-10">
+  <Image
+    src="/images/hype-dance/dance-cinematic.jpg"
+    alt="Cinematic dance portrait with dramatic warm and blue lighting"
+    width={1536}
+    height={1024}
+    className="w-full rounded-lg object-contain"
+  />
+
+  <div className="mt-6 grid gap-6 md:grid-cols-2">
+    <Image
+      src="/images/hype-dance/dance-blue-smoke.jpg"
+      alt="Full-length dancer portrait with blue smoke and dramatic lighting"
+      width={1024}
+      height={1536}
+      className="h-auto w-full rounded-lg"
+    />
+
+    <Image
+      src="/images/hype-dance/dance-blue-dress.jpg"
+      alt="Dancer in blue dress photographed with theatrical studio lighting"
+      width={1024}
+      height={1536}
+      className="h-auto w-full rounded-lg"
+    />
+  </div>
+</div>
+</div>
+  <div className="mt-14 border-t border-white/10 pt-12">
     <h3 className="text-2xl font-light tracking-wide text-white md:text-3xl">
       Ready to Get Hyped?
     </h3>
