@@ -27,7 +27,19 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+  {children}
+
+  <a
+    href="https://www.facebook.com/SnippetsofTimeKenandDebPhotography/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Visit Snippets of Time Photography on Facebook"
+    className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#1877F2] text-2xl font-bold text-white shadow-lg transition hover:scale-110"
+  >
+    f
+  </a>
+</body>
     </html>
   );
 }
