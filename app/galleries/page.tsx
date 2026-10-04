@@ -44,11 +44,6 @@ const galleries = [
       "Architecture, landscapes, villages, streets, and moments discovered while traveling Europe.",
   },
   {
-    title: "Wildlife & Nature",
-    description:
-      "Wildlife, flowers, forests, and the smaller details found throughout the natural world.",
-  },
-  {
     title: "Black & White",
     description:
       "Monochrome photographs focused on light, texture, shape, contrast, and mood.",
