@@ -12,24 +12,22 @@ image: "/images/galleries/upper-peninsula/Lighthouse Crisp Point.jpg",
     products: {
       "Gallery Wrap Canvas": {
        sizes: {
-  "12×18": {
+  "8×12": { retailPrice: 129 },
+        "12Ã—18": {
     retailPrice: 199,
   },
-  "16×24": {
+  "16Ã—24": {
     retailPrice: 279,
   },
-  "20×30": {
+  "20Ã—30": {
     retailPrice: 349,
     whccProductUID: 89,
     whccProductNodeID: 10000,
     whccItemAttributes: [126, 131],
     whccOrderAttributes: [548, 553],
   },
-  "24×36": {
+  "24Ã—36": {
     retailPrice: 499,
-  },
-  "40×60": {
-    retailPrice: 1199,
   },
 },
       },
@@ -48,20 +46,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
   products: {
     "Gallery Wrap Canvas": {
       sizes: {
-        "12×18": {
+        "8×12": { retailPrice: 129 },
+        "12Ã—18": {
           retailPrice: 199,
         },
-        "16×24": {
+        "16Ã—24": {
           retailPrice: 279,
         },
-        "20×30": {
+        "20Ã—30": {
           retailPrice: 349,
         },
-        "24×36": {
+        "24Ã—36": {
           retailPrice: 499,
-        },
-        "40×60": {
-          retailPrice: 1199,
         },
       },
     },
@@ -81,20 +77,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
   products: {
     "Gallery Wrap Canvas": {
       sizes: {
-        "12×18": {
+        "8×12": { retailPrice: 129 },
+        "12Ã—18": {
           retailPrice: 199,
         },
-        "16×24": {
+        "16Ã—24": {
           retailPrice: 279,
         },
-        "20×30": {
+        "20Ã—30": {
           retailPrice: 349,
         },
-        "24×36": {
+        "24Ã—36": {
           retailPrice: 499,
-        },
-        "40×60": {
-          retailPrice: 1199,
         },
       },
     },
@@ -113,20 +107,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -145,20 +137,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -177,20 +167,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -209,20 +197,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -241,20 +227,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -273,20 +257,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -305,20 +287,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -337,20 +317,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -369,20 +347,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -401,20 +377,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -433,20 +407,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -465,19 +437,20 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
           },
-          "40×60": {
+          "40Ã—60": {
             retailPrice: 1199,
           },
         },
@@ -497,20 +470,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -529,20 +500,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -561,20 +530,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -593,20 +560,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -625,27 +590,25 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
     },
   },
   "petoskey-breakwall-beginning-of-winter": {
-    title: "Petoskey Breakwall — Beginning of Winter",
+    title: "Petoskey Breakwall â€” Beginning of Winter",
     location: "Petoskey, Michigan",
     galleryHref: "/galleries/northern-michigan",
     galleryName: "Northern Michigan",
@@ -657,20 +620,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -689,20 +650,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -721,20 +680,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -753,20 +710,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -785,20 +740,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -817,20 +770,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -849,20 +800,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -881,20 +830,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -912,20 +859,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
   products: {
     "Gallery Wrap Canvas": {
       sizes: {
-        "12×18": {
+        "8×12": { retailPrice: 129 },
+        "12Ã—18": {
           retailPrice: 199,
         },
-        "16×24": {
+        "16Ã—24": {
           retailPrice: 279,
         },
-        "20×30": {
+        "20Ã—30": {
           retailPrice: 349,
         },
-        "24×36": {
+        "24Ã—36": {
           retailPrice: 499,
-        },
-        "40×60": {
-          retailPrice: 1199,
         },
       },
     },
@@ -944,20 +889,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
   products: {
     "Gallery Wrap Canvas": {
       sizes: {
-        "12×18": {
+        "8×12": { retailPrice: 129 },
+        "12Ã—18": {
           retailPrice: 199,
         },
-        "16×24": {
+        "16Ã—24": {
           retailPrice: 279,
         },
-        "20×30": {
+        "20Ã—30": {
           retailPrice: 349,
         },
-        "24×36": {
+        "24Ã—36": {
           retailPrice: 499,
-        },
-        "40×60": {
-          retailPrice: 1199,
         },
       },
     },
@@ -976,20 +919,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
   products: {
     "Gallery Wrap Canvas": {
       sizes: {
-        "12×18": {
+        "8×12": { retailPrice: 129 },
+        "12Ã—18": {
           retailPrice: 199,
         },
-        "16×24": {
+        "16Ã—24": {
           retailPrice: 279,
         },
-        "20×30": {
+        "20Ã—30": {
           retailPrice: 349,
         },
-        "24×36": {
+        "24Ã—36": {
           retailPrice: 499,
-        },
-        "40×60": {
-          retailPrice: 1199,
         },
       },
     },
@@ -1008,20 +949,18 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": {
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": {
             retailPrice: 199,
           },
-          "16×24": {
+          "16Ã—24": {
             retailPrice: 279,
           },
-          "20×30": {
+          "20Ã—30": {
             retailPrice: 349,
           },
-          "24×36": {
+          "24Ã—36": {
             retailPrice: 499,
-          },
-          "40×60": {
-            retailPrice: 1199,
           },
         },
       },
@@ -1039,11 +978,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1061,11 +1000,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1083,11 +1022,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1105,11 +1044,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1127,11 +1066,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1149,11 +1088,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1171,11 +1110,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1193,11 +1132,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1215,11 +1154,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1237,11 +1176,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1259,11 +1198,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1281,11 +1220,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1303,11 +1242,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1325,11 +1264,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1347,11 +1286,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1369,11 +1308,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1391,11 +1330,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1413,11 +1352,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1435,11 +1374,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1457,11 +1396,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1479,11 +1418,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1501,11 +1440,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1523,11 +1462,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1545,11 +1484,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1567,11 +1506,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1589,11 +1528,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1611,11 +1550,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1633,11 +1572,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1655,11 +1594,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1677,11 +1616,11 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
@@ -1699,13 +1638,14 @@ printMaster: "print-masters/Bicycle-PRINT.jpg",
     products: {
       "Gallery Wrap Canvas": {
         sizes: {
-          "12×18": { retailPrice: 199 },
-          "16×24": { retailPrice: 279 },
-          "20×30": { retailPrice: 349 },
-          "24×36": { retailPrice: 499 },
-          "40×60": { retailPrice: 1199 },
+          "8×12": { retailPrice: 129 },
+        "12Ã—18": { retailPrice: 199 },
+          "16Ã—24": { retailPrice: 279 },
+          "20Ã—30": { retailPrice: 349 },
+          "24Ã—36": { retailPrice: 499 },
         },
       },
     },
   },
 } as const;
+
