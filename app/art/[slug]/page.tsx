@@ -213,9 +213,11 @@ async function handleCheckout() {
               {artwork.title}
             </h1>
 
+            {["/galleries/northern-michigan", "/galleries/upper-peninsula"].includes(artwork.galleryHref) && (
             <p className="mt-4 text-sm uppercase tracking-[0.2em] text-gray-400">
               {artwork.location}
             </p>
+          )}
 
             <p className="mt-7 leading-8 text-gray-300">
   {artwork.description}
