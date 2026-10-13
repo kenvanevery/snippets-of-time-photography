@@ -1,6 +1,7 @@
 "use client";
 
 import { artworks } from "@/app/data/artworks";
+import pendingArtworks from "@/app/data/pending-artwork-slugs.json";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useMemo, useState } from "react";
@@ -84,6 +85,7 @@ export default function ArtworkPage() {
   const params = useParams();
   const slug = params.slug as keyof typeof artworks;
   const artwork = artworks[slug];
+  const purchasingPending = pendingArtworks.includes(slug);
 if (!artwork) {
   return null;
 }
@@ -327,13 +329,19 @@ async function handleCheckout() {
                 </p>
               </div>
 
-              <button
-  type="button"
-  onClick={handleCheckout}
-  className="mt-6 w-full border border-amber-300 px-6 py-4 text-sm uppercase tracking-[0.25em] text-amber-300 transition hover:bg-amber-300 hover:text-black"
->
-  Secure Checkout
-</button>
+              {purchasingPending ? (
+                <p className="mt-6 border border-amber-300/40 px-6 py-4 text-center text-sm tracking-wide text-amber-300">
+                  This photograph is coming soon. Purchasing is temporarily unavailable.
+                </p>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleCheckout}
+                  className="mt-6 w-full border border-amber-300 px-6 py-4 text-sm uppercase tracking-[0.25em] text-amber-300 transition hover:bg-amber-300 hover:text-black"
+                >
+                  Secure Checkout
+                </button>
+              )}
 
               <p className="mt-4 text-center text-xs leading-5 text-gray-500">
                 Secure checkout will be processed through Stripe. Artwork will

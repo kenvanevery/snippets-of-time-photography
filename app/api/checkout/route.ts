@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { artworks } from "@/app/data/artworks";
+import pendingArtworks from "@/app/data/pending-artwork-slugs.json";
 import { getPrintProduct } from "@/app/lib/print-products";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -12,6 +13,12 @@ export async function POST(request: Request) {
 const size = body.size;
 
 const artworkSlug = body.artworkSlug;
+if (typeof artworkSlug !== "string" || pendingArtworks.includes(artworkSlug)) {
+  return NextResponse.json(
+    { error: "This photograph is not yet available for purchase." },
+    { status: 400 }
+  );
+}
 const artwork = Object.entries(artworks).find(
   ([slug]) => slug === artworkSlug
 )?.[1];
