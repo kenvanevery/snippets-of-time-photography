@@ -28,7 +28,7 @@ const galleries = [
     title: "Landscapes",
     description:
       "Open country, forests, fields, changing skies, and the natural beauty found along the way.",
-    href: "/galleries/landscapes",
+    href: "/galleries/Landscapes",
   },
   {
     title: "Sunrise & Sunset",
@@ -46,7 +46,7 @@ const galleries = [
     title: "Europe",
     description:
       "Architecture, landscapes, villages, streets, and moments discovered while traveling Europe.",
-    href: "/galleries/europe",
+    href: "/galleries/Europe",
   },
   {
     title: "Black & White",
