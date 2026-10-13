@@ -22,36 +22,43 @@ const galleries = [
     title: "Waterscapes",
     description:
       "Great Lakes shorelines, quiet inland waters, reflections, storms, harbors, and open water.",
+    href: "/galleries/waterscapes",
   },
   {
     title: "Landscapes",
     description:
       "Open country, forests, fields, changing skies, and the natural beauty found along the way.",
+    href: "/galleries/landscapes",
   },
   {
     title: "Sunrise & Sunset",
     description:
       "The fleeting colors and changing light that mark the beginning and end of the day.",
+    href: "/galleries/sunrise-sunset",
   },
   {
     title: "Appalachia",
     description:
       "Mountain landscapes, rural communities, winding roads, and the character of Appalachia.",
+    href: "/galleries/Appalachia",
   },
   {
     title: "Europe",
     description:
       "Architecture, landscapes, villages, streets, and moments discovered while traveling Europe.",
+    href: "/galleries/europe",
   },
   {
     title: "Black & White",
     description:
       "Monochrome photographs focused on light, texture, shape, contrast, and mood.",
+    href: "/galleries/black-and-white",
   },
   {
     title: "Abandoned & Forgotten",
     description:
       "Weathered structures, forgotten places, and remnants that still have stories to tell.",
+    href: "/galleries/abandoned-and-forgotten",
   },
 ];
 
