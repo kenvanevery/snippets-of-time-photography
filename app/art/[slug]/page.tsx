@@ -301,7 +301,7 @@ async function handleCheckout() {
                       }`}
                     >
                       <span className="block text-sm tracking-[0.12em]">
-                        {option.size}
+                        {option.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
                       </span>
 
                       <span className="mt-2 block text-xs text-gray-500">
@@ -457,7 +457,7 @@ async function handleCheckout() {
  <div className="flex flex-wrap items-center justify-center gap-2">
   {currentFinish.options.map((option) => (
     <button
-      key={option.size}
+      key={option.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
       type="button"
       onClick={() => {
         setSelectedSize(option.size);
@@ -478,7 +478,7 @@ async function handleCheckout() {
           : "border-zinc-600 text-white hover:border-amber-300"
       }`}
     >
-      {option.size}
+      {option.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
     </button>
   ))}
 </div>
