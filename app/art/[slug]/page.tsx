@@ -291,7 +291,7 @@ async function handleCheckout() {
 
                   return (
                     <button
-                      key={option.size}
+                      key={option.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
                       type="button"
                       onClick={() => setSelectedSize(option.size)}
                       className={`border px-4 py-4 text-center transition ${
@@ -322,7 +322,7 @@ async function handleCheckout() {
                 <div>
                   <p className="text-lg text-white">{selectedFinish}</p>
                   <p className="mt-1 text-sm text-gray-400">
-                    {currentOption.size}
+                    {currentOption.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
                   </p>
                 </div>
 
