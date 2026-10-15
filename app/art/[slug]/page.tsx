@@ -291,7 +291,7 @@ async function handleCheckout() {
 
                   return (
                     <button
-                      key={option.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
+                      key={option.size}
                       type="button"
                       onClick={() => setSelectedSize(option.size)}
                       className={`border px-4 py-4 text-center transition ${
@@ -301,7 +301,7 @@ async function handleCheckout() {
                       }`}
                     >
                       <span className="block text-sm tracking-[0.12em]">
-                        {option.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
+                        {option.size.replace(/[^0-9]+/g, String.fromCharCode(215))}
                       </span>
 
                       <span className="mt-2 block text-xs text-gray-500">
@@ -322,7 +322,7 @@ async function handleCheckout() {
                 <div>
                   <p className="text-lg text-white">{selectedFinish}</p>
                   <p className="mt-1 text-sm text-gray-400">
-                    {currentOption.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
+                    {currentOption.size.replace(/[^0-9]+/g, String.fromCharCode(215))}
                   </p>
                 </div>
 
@@ -457,7 +457,7 @@ async function handleCheckout() {
  <div className="flex flex-wrap items-center justify-center gap-2">
   {currentFinish.options.map((option) => (
     <button
-      key={option.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
+      key={option.size}
       type="button"
       onClick={() => {
         setSelectedSize(option.size);
@@ -478,7 +478,7 @@ async function handleCheckout() {
           : "border-zinc-600 text-white hover:border-amber-300"
       }`}
     >
-      {option.size.replace(/(d+)D+(d+)/, "$1\u00D7$2")}
+      {option.size.replace(/[^0-9]+/g, String.fromCharCode(215))}
     </button>
   ))}
 </div>
