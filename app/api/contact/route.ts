@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -21,7 +21,7 @@ const messageText = String(message).trim();
 if (/^\d+$/.test(messageText)) {
   return NextResponse.json({ success: true });
 }
-    const { error } = await resend.emails.send({
+    const { error } = await getResend().emails.send({
    from: "Snippets of Time Photography <contact@snippetsoftimephotography.com>",
       to: ["contact@snippetsoftimephotography.com"],
       replyTo: email,
