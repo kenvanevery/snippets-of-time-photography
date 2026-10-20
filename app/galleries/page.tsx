@@ -28,7 +28,7 @@ const galleries = [
     title: "Landscapes",
     description:
       "Open country, forests, fields, changing skies, and the natural beauty found along the way.",
-    href: "/galleries/Landscapes",
+    href: "/galleries/landscapes",
   },
   {
     title: "Sunrise & Sunset",
