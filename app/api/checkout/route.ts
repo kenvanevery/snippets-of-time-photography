@@ -59,7 +59,7 @@ const artworkTitle = artwork.title;
 
             product_data: {
               name: artworkTitle,
-              description: `${finish} • ${size}`,
+            description: `${finish} - ${size.match(/\d+/g)?.join("x") ?? size}`,
             },
           },
         },
