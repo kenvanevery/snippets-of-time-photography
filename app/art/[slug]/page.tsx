@@ -91,7 +91,7 @@ if (!artwork) {
 }
 const canvasOptions = Object.entries(
   artwork.products["Gallery Wrap Canvas"].sizes
-).map(([size, details]) => ({
+).filter(([size]) => size.match(/\d+/g)?.join("x") !== "8x12").map(([size, details]) => ({
   size,
   price: details.retailPrice,
 }));
