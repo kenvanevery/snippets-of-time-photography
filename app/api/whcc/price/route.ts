@@ -9,10 +9,6 @@ export const runtime = "nodejs";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const WHCC_BASE_URL =
   process.env.WHCC_BASE_URL || "https://sandbox.apps.whcc.com";
-console.log("WHCC_MODE_CHECK", {
-  host: new URL(WHCC_BASE_URL).hostname,
-importOnly: process.env.WHCC_IMPORT_ONLY_TEST === "true",
-});
 export async function POST(request: Request) {
   let redis: ReturnType<typeof createClient> | undefined;
   let reservationKey: string | undefined;
