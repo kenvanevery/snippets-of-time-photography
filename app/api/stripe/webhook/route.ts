@@ -70,7 +70,10 @@ const whccData = await whccResponse.json();
 if (
   !whccResponse.ok ||
   whccData.success !== true ||
-  (session.livemode ? whccData.submittedForProduction !== true : whccData.submittedToSandbox !== true)
+  (session.livemode
+  ? whccData.submittedForProduction !== true
+  : whccData.submittedToSandbox !== true &&
+    !(whccData.testMode === "import-only" && !!whccData.confirmationID))
 ) {
   console.error("WHCC fulfillment failed:", whccData);
   return NextResponse.json(
