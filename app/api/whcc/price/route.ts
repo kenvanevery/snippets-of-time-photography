@@ -26,6 +26,15 @@ if (
     { status: 400 }
   );
 }
+const stripeIsLive = process.env.STRIPE_SECRET_KEY?.startsWith("sk_live_");
+const sessionIsLive = checkoutSessionId.startsWith("cs_live_");
+
+if (stripeIsLive !== sessionIsLive) {
+  return NextResponse.json(
+    { error: "Stripe checkout environment mismatch." },
+    { status: 400 }
+  );
+}
 const paidSession = await stripe.checkout.sessions.retrieve(
   checkoutSessionId
 );
