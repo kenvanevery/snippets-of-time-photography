@@ -35,6 +35,7 @@ if (stripeIsLive !== sessionIsLive) {
     { status: 400 }
   );
 }
+
 const paidSession = await stripe.checkout.sessions.retrieve(
   checkoutSessionId
 );
@@ -142,7 +143,7 @@ if (!artwork || !artwork.printMaster) {
     const consumerSecret = process.env.WHCC_CONSUMER_SECRET;
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
 
-    if (!consumerKey || !consumerSecret || !blobToken) {
+    if (!consumerKey || !consumerSecret) {
       return NextResponse.json(
         { error: "Required credentials are missing." },
         { status: 500 }
@@ -152,9 +153,8 @@ if (!artwork || !artwork.printMaster) {
 
     // Find our private Crisp Point print master.
     const blobResult = await list({
-      prefix: artwork.printMaster,
-      token: blobToken,
-    });
+  prefix: artwork.printMaster,
+});
 
     const crispPointBlob = blobResult.blobs.find(
       (blob) =>
@@ -173,11 +173,10 @@ if (!artwork || !artwork.printMaster) {
     const validUntil = Date.now() + 60 * 60 * 1000;
 
     const signedToken = await issueSignedToken({
-      pathname: crispPointBlob.pathname,
-      operations: ["get"],
-      validUntil,
-      token: blobToken,
-    });
+  pathname: crispPointBlob.pathname,
+  operations: ["get"],
+  validUntil,
+});
 
     const { presignedUrl: signedImageUrl } = await presignUrl(
       signedToken,
