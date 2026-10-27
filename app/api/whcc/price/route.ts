@@ -141,8 +141,7 @@ if (!artwork || !artwork.printMaster) {
 }
     const consumerKey = process.env.WHCC_CONSUMER_KEY;
     const consumerSecret = process.env.WHCC_CONSUMER_SECRET;
-    const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
-
+    
     if (!consumerKey || !consumerSecret) {
       return NextResponse.json(
         { error: "Required credentials are missing." },
