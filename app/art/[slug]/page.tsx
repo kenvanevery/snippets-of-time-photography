@@ -31,6 +31,7 @@ const finishes: Finish[] = [
     description:
       "Archival fine art printing on premium paper for a traditional gallery presentation. Print arrives unframed.",
     options: [
+      { size: "8x12", price: 49 },
       { size: "12×18", price: 79 },
       { size: "16×24", price: 179 },
       { size: "20×30", price: 229 },

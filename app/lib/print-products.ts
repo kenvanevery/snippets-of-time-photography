@@ -6,6 +6,7 @@
 
 export const printProducts: Record<string, Record<string, PrintProduct>> = {
   "Fine Art Print": {
+    "8x12": { retailPrice: 49, productUID: 251, itemAttributeUIDs: [2061] },
     "12Ã—18": { retailPrice: 79, productUID: 431, itemAttributeUIDs: [2061] },
     "16Ã—24": { retailPrice: 179, productUID: 241, itemAttributeUIDs: [2061] },
     "20Ã—30": { retailPrice: 229, productUID: 244, itemAttributeUIDs: [2061] },
