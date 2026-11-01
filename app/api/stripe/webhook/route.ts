@@ -36,6 +36,12 @@ if (!event) {
     { status: 400 }
   );
 }
+const stripeIsLive = process.env.STRIPE_SECRET_KEY?.startsWith("sk_live_");
+
+if (stripeIsLive && !event.livemode) {
+  console.log("Ignoring sandbox Stripe event in production:", event.id);
+  return NextResponse.json({ received: true, ignored: "sandbox-event" });
+}
 if (event.type === "checkout.session.completed") {
   const session = event.data.object as Stripe.Checkout.Session;
   if (session.payment_status !== "paid") {
