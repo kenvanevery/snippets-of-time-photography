@@ -26,7 +26,7 @@ if (
     { status: 400 }
   );
 }
-const stripeIsLive = process.env.STRIPE_SECRET_KEY?.startsWith("sk_live_");
+const stripeIsLive = /^(sk|rk)_live_/.test(process.env.STRIPE_SECRET_KEY ?? "");
 const sessionIsLive = checkoutSessionId.startsWith("cs_live_");
 
 if (stripeIsLive !== sessionIsLive) {

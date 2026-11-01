@@ -36,7 +36,7 @@ if (!event) {
     { status: 400 }
   );
 }
-const stripeIsLive = process.env.STRIPE_SECRET_KEY?.startsWith("sk_live_");
+const stripeIsLive = /^(sk|rk)_live_/.test(process.env.STRIPE_SECRET_KEY ?? "");
 
 if (stripeIsLive && !event.livemode) {
   console.log("Ignoring sandbox Stripe event in production:", event.id);
