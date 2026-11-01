@@ -118,11 +118,13 @@ if (prior) {
   }, { status: 409 });
 }
 if (await redis.get(orderKey)) {
-  return NextResponse.json({
-    success: true, alreadyProcessed: true,
-    submittedForProduction: paidSession.livemode,
-    submittedToSandbox: !paidSession.livemode,
-  });
+  return NextResponse.json(
+    {
+      success: false,
+      error: "Legacy order record found. Manual fulfillment review required.",
+    },
+    { status: 409 }
+  );
 }
 // Use the shipping details stored by Stripe.
 body.shippingDetails =
