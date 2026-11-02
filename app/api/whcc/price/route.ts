@@ -452,6 +452,13 @@ if (submitData.ConfirmedOrders !== 1 || submitData.ConfirmationID !== confirmati
     }));
     return NextResponse.json(result);
   }  catch (error) {
+    
+console.error("WHCC failure detail:",
+  error instanceof Error
+    ? { name: error.name, message: error.message }
+    : "Unknown exception"
+);
+
     console.error("WHCC fulfillment requires attention.", { reservationKey, confirmationID: confirmationForReview });
 
     return NextResponse.json(
