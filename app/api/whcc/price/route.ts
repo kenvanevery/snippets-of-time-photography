@@ -455,7 +455,7 @@ if (submitData.ConfirmedOrders !== 1 || submitData.ConfirmationID !== confirmati
     
 console.error("WHCC failure detail:",
   error instanceof Error
-    ? { name: error.name, message: error.message }
+   ? { name: error.name, message: error.message, stack: error.stack }
     : "Unknown exception"
 );
 
