@@ -4,7 +4,7 @@ import { artworks } from "@/app/data/artworks";
 import pendingArtworks from "@/app/data/pending-artwork-slugs.json";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type FinishName =
   | "Fine Art Print"
@@ -112,6 +112,45 @@ const canvasOptions = Object.entries(
 
   return finish;
 }, [selectedFinish, canvasOptions]);
+
+  type VerifiedPurchase = {
+    artwork: string;
+    finish: string;
+    size: string;
+    amount: number;
+  };
+  const [checkoutReturn, setCheckoutReturn] = useState<"none" | "checking" | "confirmed" | "error">("none");
+  const [verifiedPurchase, setVerifiedPurchase] = useState<VerifiedPurchase | null>(null);
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("checkout") !== "success") return;
+    const sessionId = query.get("session_id");
+    if (!sessionId) {
+      setCheckoutReturn("error");
+      return;
+    }
+
+    let cancelled = false;
+    setCheckoutReturn("checking");
+    fetch(`/api/checkout/confirm?session_id=${encodeURIComponent(sessionId)}&slug=${encodeURIComponent(String(slug))}`, {
+      cache: "no-store",
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Unable to verify payment");
+        return (await response.json()) as VerifiedPurchase;
+      })
+      .then((purchase) => {
+        if (cancelled) return;
+        setVerifiedPurchase(purchase);
+        setCheckoutReturn("confirmed");
+      })
+      .catch(() => {
+        if (!cancelled) setCheckoutReturn("error");
+      });
+
+    return () => { cancelled = true; };
+  }, [slug]);
 
   const [selectedSize, setSelectedSize] = useState("20×30");
 const [showWallPreview, setShowWallPreview] = useState(false);
@@ -224,7 +263,34 @@ async function handleCheckout() {
   {artwork.description}
 </p>
 
-            <div className="mt-10 border-t border-white/10 pt-8">
+            {checkoutReturn === "checking" ? (
+              <div className="mt-10 border border-amber-300/40 bg-zinc-950 p-6" role="status">
+                <h2 className="text-xl text-amber-300">Checking your payment...</h2>
+                <p className="mt-3 text-gray-300">Please do not place another order.</p>
+              </div>
+            ) : checkoutReturn === "confirmed" && verifiedPurchase ? (
+              <div className="mt-10 border border-amber-300 bg-zinc-950 p-6" role="status">
+                <p className="text-xs uppercase tracking-[0.3em] text-amber-300">Order confirmation</p>
+                <h2 className="mt-3 text-2xl text-white">Thank you! Your payment is confirmed.</h2>
+                <p className="mt-4 text-gray-300">{verifiedPurchase.artwork}</p>
+                <p className="mt-2 text-gray-300">{verifiedPurchase.finish} · {verifiedPurchase.size.replace(/[^0-9]+/g, "×")}</p>
+                <p className="mt-3 text-3xl text-amber-300">${verifiedPurchase.amount.toFixed(2)}</p>
+                <p className="mt-5 text-sm leading-6 text-gray-400">
+                  Your payment was successful. Your print order will be processed by our print lab.
+                  This confirmation does not indicate that the order has shipped.
+                </p>
+                <Link href="/galleries" className="mt-6 inline-block border border-amber-300 px-5 py-3 text-sm text-amber-300 hover:bg-amber-300 hover:text-black">
+                  Return to galleries
+                </Link>
+              </div>
+            ) : checkoutReturn === "error" ? (
+              <div className="mt-10 border border-amber-300/40 bg-zinc-950 p-6" role="alert">
+                <h2 className="text-xl text-amber-300">We couldn't verify this checkout.</h2>
+                <p className="mt-3 text-gray-300">If you completed payment, do not purchase again. Please contact Snippets of Time Photography with your receipt.</p>
+              </div>
+            ) : (
+  <>
+    <div className="mt-10 border-t border-white/10 pt-8">
               <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
                 Step 1
               </p>
@@ -351,6 +417,8 @@ async function handleCheckout() {
                 be professionally produced and fulfilled through our print lab.
               </p>
             </div>
+</>
+)}
           </div>
         </div>
       </section>
