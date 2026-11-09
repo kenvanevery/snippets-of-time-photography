@@ -42,6 +42,22 @@ if (!artwork || !artwork.printMaster) {
         { status: 400 }
       );
     }
+    // Artwork-specific maximum print size
+if (artworkSlug === "mums-over-walloon-lake") {
+  const dimensions = size.match(/\d+/g)?.map(Number);
+
+  if (
+    !dimensions ||
+    dimensions.length !== 2 ||
+    Math.min(...dimensions) > 24 ||
+    Math.max(...dimensions) > 36
+  ) {
+    return NextResponse.json(
+      { error: "This photograph is available up to 24x36 inches." },
+      { status: 400 }
+    );
+  }
+}
 const artworkTitle = artwork.title;
     const price = product.retailPrice;
 

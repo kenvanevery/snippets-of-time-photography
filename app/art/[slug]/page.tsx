@@ -90,6 +90,10 @@ export default function ArtworkPage() {
 if (!artwork) {
   return null;
 }
+const isMums = slug === "mums-over-walloon-lake";
+const allowedMumsSizes = ["8x12", "12x18", "16x24", "20x30", "24x36"];
+const normalizeSize = (size: string) =>
+  size.match(/\d+/g)?.join("x") ?? size;
 const canvasOptions = Object.entries(
   artwork.products["Gallery Wrap Canvas"].sizes
 ).filter(([size]) => size.match(/\d+/g)?.join("x") !== "8x12").map(([size, details]) => ({
@@ -100,18 +104,28 @@ const canvasOptions = Object.entries(
 
     useState<FinishName>("Gallery Wrap Canvas");
 
-  const currentFinish = useMemo(() => {
-  const finish = finishes.find((finish) => finish.name === selectedFinish)!;
+  
+const currentFinish = useMemo(() => {
+  const finish = finishes.find(
+    (item) => item.name === selectedFinish
+  )!;
 
-  if (finish.name === "Gallery Wrap Canvas") {
-    return {
-      ...finish,
-      options: canvasOptions,
-    };
-  }
+  const options =
+    finish.name === "Gallery Wrap Canvas"
+      ? canvasOptions
+      : finish.options;
 
-  return finish;
-}, [selectedFinish, canvasOptions]);
+  return {
+    ...finish,
+    options: isMums
+      ? options.filter((option) =>
+          allowedMumsSizes.includes(normalizeSize(option.size))
+        )
+      : options,
+  };
+}, [selectedFinish, canvasOptions, isMums]);
+
+
 
   type VerifiedPurchase = {
     artwork: string;

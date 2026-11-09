@@ -72,7 +72,7 @@ galleryName: "Beauty of Ordinary Things",
 description:
   "Colorful autumn chrysanthemums overlook the sparkling waters and wooded shoreline of Walloon Lake in Northern Michigan.",
 image: "/images/galleries/beauty-of-ordinary-things/mums-over-walloon-lake.jpg",
-printMaster: "print-masters/MUMS-PRINT-MASTER-NEEDS-VERIFICATION.jpg",
+printMaster: "print-masters/MUMS-PRINT-MASTER-6X.jpeg",
 
   products: {
     "Gallery Wrap Canvas": {
