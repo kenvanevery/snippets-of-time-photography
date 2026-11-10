@@ -92,7 +92,7 @@ printMaster: "print-masters/MUMS-PRINT-MASTER-6X.jpeg",
         },
       },
     },
-  },
+  }
   },
 
 "mackinac-bridge-reflections": {
@@ -433,7 +433,7 @@ printMaster: "print-masters/MUMS-PRINT-MASTER-6X.jpeg",
     description:
       "A scenic view of Harbor Point overlooking Harbor Springs captures the quiet beauty of Little Traverse Bay.",
     image: "/images/galleries/northern-michigan/Harbor Point Harbor Springs.jpg",
-    printMaster: "print-masters/Harbor-Point-Harbor-Springs-PRINT.jpg",
+    printMaster: "print-masters/Harbor-Point-Harbor-Springs-PRINT.jpeg",
 
     products: {
       "Gallery Wrap Canvas": {

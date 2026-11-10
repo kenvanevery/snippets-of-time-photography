@@ -90,7 +90,7 @@ export default function ArtworkPage() {
 if (!artwork) {
   return null;
 }
-const isMums = slug === "mums-over-walloon-lake";
+const isMums = ["mums-over-walloon-lake", "harbor-point-harbor-springs"].includes(slug);
 const allowedMumsSizes = ["8x12", "12x18", "16x24", "20x30", "24x36"];
 const normalizeSize = (size: string) =>
   size.match(/\d+/g)?.join("x") ?? size;
@@ -103,7 +103,6 @@ const canvasOptions = Object.entries(
   const [selectedFinish, setSelectedFinish] =
 
     useState<FinishName>("Gallery Wrap Canvas");
-
   
 const currentFinish = useMemo(() => {
   const finish = finishes.find(

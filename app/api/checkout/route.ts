@@ -43,7 +43,10 @@ if (!artwork || !artwork.printMaster) {
       );
     }
     // Artwork-specific maximum print size
-if (artworkSlug === "mums-over-walloon-lake") {
+if (
+  artworkSlug === "mums-over-walloon-lake" ||
+  artworkSlug === "harbor-point-harbor-springs"
+) {
   const dimensions = size.match(/\d+/g)?.map(Number);
 
   if (
