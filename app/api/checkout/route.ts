@@ -13,7 +13,7 @@ export async function POST(request: Request) {
 const size = body.size;
 
 const artworkSlug = body.artworkSlug;
-if (typeof artworkSlug !== "string" || pendingArtworks.includes(artworkSlug)) {
+if (typeof artworkSlug !== "string" || (pendingArtworks as readonly string[]).includes(String(artworkSlug))) {
   return NextResponse.json(
     { error: "This photograph is not yet available for purchase." },
     { status: 400 }

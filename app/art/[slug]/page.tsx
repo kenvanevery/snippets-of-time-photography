@@ -86,7 +86,7 @@ export default function ArtworkPage() {
   const params = useParams();
   const slug = params.slug as keyof typeof artworks;
   const artwork = artworks[slug];
-  const purchasingPending = pendingArtworks.includes(slug);
+const purchasingPending = (pendingArtworks as readonly string[]).includes(slug);
 if (!artwork) {
   return null;
 }
