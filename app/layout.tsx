@@ -12,10 +12,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Snippets of Time Photography",
-  description: "Fine Art Photography from Michigan and Beyond",
+
+
+export const metadata: Metadata = {
+  metadataBase: new URL(
+    "https://www.snippetsoftimephotography.com"
+  ),
+
+  title: {
+    default:
+      "Snippets of Time Photography | Fine Art Prints & Michigan Photography",
+    template: "%s | Snippets of Time Photography",
+  },
+
+  description:
+    "Explore fine art photography prints featuring Northern Michigan landscapes, lighthouses, nature, and scenic destinations across America and beyond.",
+
+  openGraph: {
+    title: "Snippets of Time Photography",
+    description:
+      "Discover fine art landscape, nature, and lighthouse photography prints from Northern Michigan and beyond.",
+    url: "https://www.snippetsoftimephotography.com",
+    siteName: "Snippets of Time Photography",
+    type: "website",
+  },
 };
+
 
 export default function RootLayout({
   children,
