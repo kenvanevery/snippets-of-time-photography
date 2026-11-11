@@ -2,7 +2,7 @@
 import type { MetadataRoute } from "next";
 import { artworks } from "./data/artworks";
 
-const BASE_URL = "https://snippetsoftimephotography.com";
+const BASE_URL = "https://www.snippetsoftimephotography.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
