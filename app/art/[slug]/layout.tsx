@@ -99,6 +99,20 @@ export default async function ArtworkLayout({
           url,
           priceCurrency: "USD",
           price: product.retailPrice,
+
+shippingDetails: {
+  "@type": "OfferShippingDetails",
+  shippingRate: {
+    "@type": "MonetaryAmount",
+    value: 0,
+    currency: "USD",
+  },
+  shippingDestination: {
+    "@type": "DefinedRegion",
+    addressCountry: "US",
+  },
+},
+
           availability: isPending
             ? "https://schema.org/OutOfStock"
             : "https://schema.org/InStock",
