@@ -425,10 +425,21 @@ async function handleCheckout() {
                 </button>
               )}
 
-              <p className="mt-4 text-center text-xs leading-5 text-gray-500">
-                Secure checkout will be processed through Stripe. Artwork will
-                be professionally produced and fulfilled through our print lab.
-              </p>
+              
+<p className="mt-4 text-center text-xs leading-5 text-gray-500">
+  Secure checkout will be processed through Stripe. Artwork will
+  be professionally produced and fulfilled through our print lab.
+</p>
+
+<p className="mt-4 text-center text-sm">
+  <Link
+    href="/shipping-returns"
+    className="text-amber-300 underline underline-offset-4 transition hover:text-white"
+  >
+    Shipping & Returns Policy
+  </Link>
+</p>
+
             </div>
 </>
 )}
