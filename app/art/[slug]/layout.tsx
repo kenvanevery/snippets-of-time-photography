@@ -1,6 +1,11 @@
 
 import type { Metadata } from "next";
 import { artworks } from "@/app/data/artworks";
+import pendingArtworks from "@/app/data/pending-artwork-slugs.json";
+import { getPrintProduct } from "@/app/lib/print-products";
+
+const BASE_URL =
+  "https://www.snippetsoftimephotography.com";
 
 type Props = {
   children: React.ReactNode;
@@ -11,7 +16,6 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
   const { slug } = await params;
-
   const artwork = artworks[slug as keyof typeof artworks];
 
   if (!artwork) {
@@ -21,13 +25,14 @@ export async function generateMetadata({
     };
   }
 
-  const title = `${artwork.title} | Fine Art Photography Print`;
+  const title =
+    `${artwork.title} | Fine Art Photography Print`;
 
   const description =
     `${artwork.description} Available as a professional fine art photography print from Snippets of Time Photography.`;
 
   const url =
-    `https://www.snippetsoftimephotography.com/art/${encodeURIComponent(slug)}`;
+    `${BASE_URL}/art/${encodeURIComponent(slug)}`;
 
   return {
     title: {
@@ -53,10 +58,73 @@ export async function generateMetadata({
   };
 }
 
-export default function ArtworkLayout({
+export default async function ArtworkLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+  params,
+}: Props) {
+  const { slug } = await params;
+  const artwork = artworks[slug as keyof typeof artworks];
+
+  if (!artwork) {
+    return <>{children}</>;
+  }
+
+  const product = getPrintProduct(
+    "Fine Art Print",
+    "8x12"
+  );
+
+  const isPending = (
+    pendingArtworks as readonly string[]
+  ).includes(slug);
+
+  const url =
+    `${BASE_URL}/art/${encodeURIComponent(slug)}`;
+
+  const productSchema = product
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: artwork.title,
+        description: artwork.description,
+        image: [
+          new URL(artwork.image, BASE_URL).href,
+        ],
+        brand: {
+          "@type": "Brand",
+          name: "Snippets of Time Photography",
+        },
+        offers: {
+          "@type": "Offer",
+          url,
+          priceCurrency: "USD",
+          price: product.retailPrice,
+          availability: isPending
+            ? "https://schema.org/OutOfStock"
+            : "https://schema.org/InStock",
+          itemCondition:
+            "https://schema.org/NewCondition",
+          seller: {
+            "@type": "Organization",
+            name: "Snippets of Time Photography",
+          },
+        },
+      }
+    : null;
+
+  return (
+    <>
+      {productSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              productSchema
+            ).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
+      {children}
+    </>
+  );
 }
