@@ -83,12 +83,35 @@ export default function AppalachiaPage() {
               key={photo.src}
               className="mb-8 break-inside-avoid overflow-hidden bg-neutral-950"
             >
-              <a href={`/art/${photo.slug}`}>
+            
+              <a
+                href={`/art/${photo.slug}`}
+                className="block no-underline"
+              >
                 <img
                   src={photo.src}
                   alt={photo.alt}
                   className="h-auto w-full object-cover"
                 />
+                <div
+                  style={{
+                    padding: "14px 12px",
+                    textAlign: "center",
+                    background: "#141414",
+                    borderBottom: "1px solid #d4af37",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "#d4af37",
+                      fontSize: "0.95rem",
+                      fontWeight: 500,
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    View Details &amp; Prints →
+                  </span>
+                </div>
               </a>
             </div>
           ))}
@@ -97,3 +120,4 @@ export default function AppalachiaPage() {
     </main>
   );
 }
+

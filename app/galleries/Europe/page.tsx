@@ -129,6 +129,27 @@ export default function EuropeGallery() {
                 className="h-auto w-full transition duration-500 hover:scale-[1.02]"
                 loading="lazy"
               />
+
+<div
+  style={{
+    padding: "14px 12px",
+    textAlign: "center",
+    background: "#141414",
+    borderBottom: "1px solid #d4af37",
+  }}
+>
+  <span
+    style={{
+      color: "#d4af37",
+      fontSize: "0.95rem",
+      fontWeight: 500,
+      letterSpacing: "0.05em",
+    }}
+  >
+    View Details &amp; Prints →
+  </span>
+</div>
+
             </Link>
           ))}
         </div>

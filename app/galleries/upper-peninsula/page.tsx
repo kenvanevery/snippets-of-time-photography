@@ -207,6 +207,27 @@ export default function UpperPeninsulaPage() {
     loading="lazy"
   />
 )}
+
+{photo.slug && (
+  <a
+    href={`/art/${photo.slug}`}
+    style={{
+      display: "block",
+      padding: "14px 12px",
+      textAlign: "center",
+      background: "#141414",
+      borderBottom: "1px solid #d4af37",
+      color: "#d4af37",
+      fontSize: "0.95rem",
+      fontWeight: 500,
+      letterSpacing: "0.05em",
+      textDecoration: "none",
+    }}
+  >
+    View Details &amp; Prints →
+  </a>
+)}
+
             </div>
           ))}
         </div>

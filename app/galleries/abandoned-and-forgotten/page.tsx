@@ -108,26 +108,46 @@ export default function AbandonedAndForgottenGallery() {
           }}
         >
           {photos.map((photo) => (
-            <Link
-              key={photo.slug}
-              href={`/art/${photo.slug}`}
-              style={{
-                display: "block",
-                breakInside: "avoid",
-                marginBottom: "34px",
-                textDecoration: "none",
-              }}
-            >
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                }}
-              />
-            </Link>
+ 
+<Link
+  key={photo.slug}
+  href={`/art/${photo.slug}`}
+  style={{
+    display: "block",
+    breakInside: "avoid",
+    marginBottom: "34px",
+    textDecoration: "none",
+  }}
+>
+  <img
+    src={photo.src}
+    alt={photo.alt}
+    style={{
+      width: "100%",
+      height: "auto",
+      display: "block",
+    }}
+  />
+  <div
+    style={{
+      padding: "14px 12px",
+      textAlign: "center",
+      background: "#141414",
+      borderBottom: "1px solid #d4af37",
+    }}
+  >
+    <span
+      style={{
+        color: "#d4af37",
+        fontSize: "0.95rem",
+        fontWeight: 500,
+        letterSpacing: "0.05em",
+      }}
+    >
+      View Details &amp; Prints →
+    </span>
+  </div>
+</Link>
           ))}
         </div>
       </div>
