@@ -100,6 +100,15 @@ export default async function ArtworkLayout({
           priceCurrency: "USD",
           price: product.retailPrice,
 
+hasMerchantReturnPolicy: {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "US",
+  returnPolicyCategory:
+    "https://schema.org/MerchantReturnNotPermitted",
+  merchantReturnLink:
+    `${BASE_URL}/shipping-returns`,
+},
+
 shippingDetails: {
   "@type": "OfferShippingDetails",
   shippingRate: {
