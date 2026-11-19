@@ -15,9 +15,14 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
+  verification: {
+    google: "DhDTzBcKByqNtnwU5a7y2WKR4AhHyDaYO_fCZLMkIq0",
+  },
+
   metadataBase: new URL(
     "https://www.snippetsoftimephotography.com"
   ),
+  
 
   title: {
     default:
